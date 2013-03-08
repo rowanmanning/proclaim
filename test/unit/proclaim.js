@@ -214,19 +214,62 @@
 
         });
 
+        // This is about to get more confusing than I though possible...
         describe('.throws()', function () {
 
             it('should be a function', function () {
                 assert.strictEqual(typeof proclaim.throws, 'function');
             });
 
-            it('should not throw when called with a function which does throw');
+            it('should not throw when called with a function which does throw', function () {
+                assert.doesNotThrow(function () {
+                    proclaim.throws(function () {
+                        throw new Error('foo');
+                    });
+                });
+            });
 
-            it('should throw when called with a function which does not throw');
+            it('should throw when called with a function which does not throw', function () {
+                assert.throws(function () {
+                    proclaim.throws(function () {});
+                }, proclaim.AssertionError);
+            });
 
-            it('should not throw when thrown error matches the expected error');
+            it('should not throw when thrown error matches the expected error', function () {
+                assert.doesNotThrow(function () {
+                    proclaim.throws(function () {
+                        throw new Error('foo');
+                    }, Error);
+                });
+                assert.doesNotThrow(function () {
+                    proclaim.throws(function () {
+                        throw new Error('foo');
+                    }, /foo/);
+                });
+                assert.doesNotThrow(function () {
+                    proclaim.throws(function () {
+                        throw new Error('foo');
+                    }, 'foo');
+                });
+            });
 
-            it('should throw when thrown error does not match the expected error');
+            it('should throw when thrown error does not match the expected error', function () {
+                assert.throws(function () {
+                    proclaim.throws(function () {
+                        throw new Error('foo');
+                    }, proclaim.AssertionError);
+                }, proclaim.AssertionError);
+                assert.throws(function () {
+                    proclaim.throws(function () {
+                        throw new Error('foo');
+                    }, /bar/);
+                }, proclaim.AssertionError);
+                assert.throws(function () {
+                    proclaim.throws(function () {
+                        throw new Error('foo');
+                    }, 'bar');
+                }, proclaim.AssertionError);
+            });
 
         });
 
