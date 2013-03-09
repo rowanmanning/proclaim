@@ -72,6 +72,32 @@
 
         });
 
+        describe('.fail()', function () {
+
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.fail, 'function');
+            });
+
+            it('should throw an AssertionError', function () {
+                assert.throws(function () { proclaim.fail('foo', 'bar'); }, proclaim.AssertionError);
+            });
+
+            describe('error', function () {
+
+                it('should have the expected properties', function () {
+                    var error;
+                    try { proclaim.fail('foo', 'bar', 'baz', 'qux'); }
+                    catch (err) { error = err; }
+                    assert.strictEqual(error.actual, 'foo');
+                    assert.strictEqual(error.expected, 'bar');
+                    assert.strictEqual(error.message, 'baz');
+                    assert.strictEqual(error.operator, 'qux');
+                });
+
+            });
+
+        });
+
         describe('.ok()', function () {
 
             it('should be a function', function () {
