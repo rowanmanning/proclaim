@@ -12,6 +12,15 @@
     // Test suite
     describe('proclaim', function () {
 
+        beforeEach(function (done) {
+            // Nasty hack to prevent stack space errors in IE
+            // https://github.com/visionmedia/mocha/issues/502
+            // (also function wrapper fixes error in Firefox 3.6)
+            setTimeout(function () {
+                done();
+            }, 0);
+        });
+
         it('should be an object', function () {
             assert.strictEqual(typeof proclaim, 'object');
         });
@@ -54,7 +63,7 @@
 
                     it('should return a string representation of the error when no message is set', function () {
                         delete err.message;
-                        assert.strictEqual('' + err, 'AssertionError: "bar" === "baz"');
+                        assert.strictEqual('' + err, 'AssertionError: bar === baz');
                     });
 
                 });
