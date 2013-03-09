@@ -63,12 +63,12 @@ Assertions
 All assertions throw `AssertionError` if they fail.
 
 
-### proclaim.fail( actual, operator, expected, [message] )
+### proclaim.fail( actual, expected, [message], [operator] )
 
 Throw an assertion error.
 
 ```js
-proclaim.fail('foo', '===', 'bar', 'Foo equals bar');
+proclaim.fail('foo', 'bar', 'Foo equals bar', '===');
 ```
 
 
