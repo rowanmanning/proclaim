@@ -279,13 +279,55 @@
                 assert.strictEqual(typeof proclaim.doesNotThrow, 'function');
             });
 
-            it('should not throw when called with a function which does not throw');
+            it('should not throw when called with a function which does not throw', function () {
+                assert.doesNotThrow(function () {
+                    proclaim.doesNotThrow(function () {});
+                });
+            });
 
-            it('should throw when called with a function which does throw');
+            it('should throw when called with a function which does throw', function () {
+                assert.throws(function () {
+                    proclaim.doesNotThrow(function () {
+                        throw new Error('foo');
+                    });
+                }, proclaim.AssertionError);
+            });
 
-            it('should not throw when thrown error does not match the expected error');
+            it('should not throw when thrown error does not match the expected error', function () {
+                assert.doesNotThrow(function () {
+                    proclaim.doesNotThrow(function () {
+                        throw new Error('foo');
+                    }, proclaim.AssertionError);
+                });
+                assert.doesNotThrow(function () {
+                    proclaim.doesNotThrow(function () {
+                        throw new Error('foo');
+                    }, /bar/);
+                });
+                assert.doesNotThrow(function () {
+                    proclaim.doesNotThrow(function () {
+                        throw new Error('foo');
+                    }, 'bar');
+                });
+            });
 
-            it('should throw when thrown error matches the expected error');
+            it('should throw when thrown error matches the expected error', function () {
+                assert.throws(function () {
+                    proclaim.doesNotThrow(function () {
+                        throw new Error('foo');
+                    }, Error);
+                }, proclaim.AssertionError);
+                assert.throws(function () {
+                    proclaim.doesNotThrow(function () {
+                        throw new Error('foo');
+                    }, /foo/);
+                }, proclaim.AssertionError);
+                assert.throws(function () {
+                    proclaim.doesNotThrow(function () {
+                        throw new Error('foo');
+                    }, 'foo');
+                }, proclaim.AssertionError);
+            });
 
         });
 
@@ -295,9 +337,17 @@
                 assert.strictEqual(typeof proclaim.isTypeOf, 'function');
             });
 
-            it('should not throw when called with a matching value and type');
+            it('should not throw when called with a matching value and type', function () {
+                assert.doesNotThrow(function () { proclaim.isTypeOf(true, 'boolean'); });
+                assert.doesNotThrow(function () { proclaim.isTypeOf('foo', 'string'); });
+                assert.doesNotThrow(function () { proclaim.isTypeOf([], 'object'); });
+            });
 
-            it('should throw when called with an unmatching value and type');
+            it('should throw when called with an unmatching value and type', function () {
+                assert.throws(function () { proclaim.isTypeOf(true, 'undefined'); }, proclaim.AssertionError);
+                assert.throws(function () { proclaim.isTypeOf('foo', 'number'); }, proclaim.AssertionError);
+                assert.throws(function () { proclaim.isTypeOf([], 'function'); }, proclaim.AssertionError);
+            });
 
         });
 
@@ -307,9 +357,17 @@
                 assert.strictEqual(typeof proclaim.isNotTypeOf, 'function');
             });
 
-            it('should not throw when called with an umatching value and type');
+            it('should not throw when called with an umatching value and type', function () {
+                assert.doesNotThrow(function () { proclaim.isNotTypeOf(true, 'undefined'); });
+                assert.doesNotThrow(function () { proclaim.isNotTypeOf('foo', 'number'); });
+                assert.doesNotThrow(function () { proclaim.isNotTypeOf([], 'function'); });
+            });
 
-            it('should throw when called with a matching value and type');
+            it('should throw when called with a matching value and type', function () {
+                assert.throws(function () { proclaim.isNotTypeOf(true, 'boolean'); }, proclaim.AssertionError);
+                assert.throws(function () { proclaim.isNotTypeOf('foo', 'string'); }, proclaim.AssertionError);
+                assert.throws(function () { proclaim.isNotTypeOf([], 'object'); }, proclaim.AssertionError);
+            });
 
         });
 
@@ -319,9 +377,13 @@
                 assert.strictEqual(typeof proclaim.isInstanceOf, 'function');
             });
 
-            it('should not throw when called with a matching value and constructor');
+            it('should not throw when called with a matching value and constructor', function () {
+                assert.doesNotThrow(function () { proclaim.isInstanceOf(new Date(), Date); });
+            });
 
-            it('should throw when called with an unmatching value and constructor');
+            it('should throw when called with an unmatching value and constructor', function () {
+                assert.throws(function () { proclaim.isInstanceOf({}, Date); }, proclaim.AssertionError);
+            });
 
         });
 
@@ -331,9 +393,13 @@
                 assert.strictEqual(typeof proclaim.isNotInstanceOf, 'function');
             });
 
-            it('should not throw when called with an umatching value and constructor');
+            it('should not throw when called with an umatching value and constructor', function () {
+                assert.doesNotThrow(function () { proclaim.isNotInstanceOf({}, Date); });
+            });
 
-            it('should throw when called with a matching value and constructor');
+            it('should throw when called with a matching value and constructor', function () {
+                assert.throws(function () { proclaim.isNotInstanceOf(new Date(), Date); }, proclaim.AssertionError);
+            });
 
         });
 
