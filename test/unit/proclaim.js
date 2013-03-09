@@ -139,8 +139,9 @@
             });
 
             it('should not throw when called with deeply equal values', function () {
+                var date = new Date();
                 assert.doesNotThrow(function () { proclaim.deepEqual(true, true); });
-                assert.doesNotThrow(function () { proclaim.deepEqual(new Date(), new Date()); });
+                assert.doesNotThrow(function () { proclaim.deepEqual(date, date); });
                 assert.doesNotThrow(function () {
                     proclaim.deepEqual({foo: 'bar', bar: ['baz']}, {foo: 'bar', bar: ['baz']});
                 });
@@ -173,8 +174,9 @@
             });
 
             it('should throw when called with deeply equal values', function () {
+                var date = new Date();
                 assert.throws(function () { proclaim.notDeepEqual(true, true); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.notDeepEqual(new Date(), new Date()); }, proclaim.AssertionError);
+                assert.throws(function () { proclaim.notDeepEqual(date, date); }, proclaim.AssertionError);
                 assert.throws(function () {
                     proclaim.notDeepEqual({foo: 'bar', bar: ['baz']}, {foo: 'bar', bar: ['baz']});
                 }, proclaim.AssertionError);
