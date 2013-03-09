@@ -62,7 +62,7 @@
                     });
 
                     it('should return a string representation of the error when no message is set', function () {
-                        delete err.message;
+                        err.message = null;
                         assert.strictEqual('' + err, 'AssertionError: bar === baz');
                     });
 
