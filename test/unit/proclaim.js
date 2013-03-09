@@ -275,7 +275,9 @@
 
         describe('.doesNotThrow()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.doesNotThrow, 'function');
+            });
 
             it('should not throw when called with a function which does not throw');
 
@@ -289,7 +291,9 @@
 
         describe('isTypeOf()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isTypeOf, 'function');
+            });
 
             it('should not throw when called with a matching value and type');
 
@@ -299,7 +303,9 @@
 
         describe('isNotTypeOf()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isNotTypeOf, 'function');
+            });
 
             it('should not throw when called with an umatching value and type');
 
@@ -309,7 +315,9 @@
 
         describe('isInstanceOf()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isInstanceOf, 'function');
+            });
 
             it('should not throw when called with a matching value and constructor');
 
@@ -319,7 +327,9 @@
 
         describe('isNotInstanceOf()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isNotInstanceOf, 'function');
+            });
 
             it('should not throw when called with an umatching value and constructor');
 
@@ -329,7 +339,9 @@
 
         describe('isArray()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isArray, 'function');
+            });
 
             it('should not throw when called with an array');
 
@@ -339,7 +351,9 @@
 
         describe('isNotArray()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isNotArray, 'function');
+            });
 
             it('should not throw when called with a non-array');
 
@@ -349,7 +363,9 @@
 
         describe('isBoolean()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isBoolean, 'function');
+            });
 
             it('should not throw when called with a boolean');
 
@@ -359,7 +375,9 @@
 
         describe('isNotBoolean()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isNotBoolean, 'function');
+            });
 
             it('should not throw when called with a non-boolean');
 
@@ -369,7 +387,9 @@
 
         describe('isTrue()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isTrue, 'function');
+            });
 
             it('should not throw when called with true');
 
@@ -379,7 +399,9 @@
 
         describe('isFalse()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isFalse, 'function');
+            });
 
             it('should not throw when called with false');
 
@@ -389,7 +411,9 @@
 
         describe('isFunction()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isFunction, 'function');
+            });
 
             it('should not throw when called with a function');
 
@@ -399,7 +423,9 @@
 
         describe('isNotFunction()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isNotFunction, 'function');
+            });
 
             it('should not throw when called with a non-function');
 
@@ -409,7 +435,9 @@
 
         describe('isNull()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isNull, 'function');
+            });
 
             it('should not throw when called with a null value');
 
@@ -419,7 +447,9 @@
 
         describe('isNotNull()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isNotNull, 'function');
+            });
 
             it('should not throw when called with a non-null value');
 
@@ -429,7 +459,9 @@
 
         describe('isNumber()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isNumber, 'function');
+            });
 
             it('should not throw when called with a number');
 
@@ -439,7 +471,9 @@
 
         describe('isNotNumber()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isNotNumber, 'function');
+            });
 
             it('should not throw when called with a non-number');
 
@@ -449,7 +483,9 @@
 
         describe('isObject()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isObject, 'function');
+            });
 
             it('should not throw when called with an object');
 
@@ -459,7 +495,9 @@
 
         describe('isNonObject()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isNonObject, 'function');
+            });
 
             it('should not throw when called with a non-object');
 
@@ -469,7 +507,9 @@
 
         describe('isString()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isString, 'function');
+            });
 
             it('should not throw when called with a string');
 
@@ -479,7 +519,9 @@
 
         describe('isNonString()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isNonString, 'function');
+            });
 
             it('should not throw when called with a non-string');
 
@@ -489,7 +531,9 @@
 
         describe('isUndefined()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isUndefined, 'function');
+            });
 
             it('should not throw when called with an undefined value');
 
@@ -499,7 +543,9 @@
 
         describe('isDefined()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.isDefined, 'function');
+            });
 
             it('should not throw when called with a defined value');
 
@@ -509,7 +555,9 @@
 
         describe('match()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.match, 'function');
+            });
 
             it('should not throw when called with a matching value and regexp');
 
@@ -519,7 +567,9 @@
 
         describe('notMatch()', function () {
 
-            it('should be a function');
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.notMatch, 'function');
+            });
 
             it('should not throw when called with a non-matching value and regexp');
 
