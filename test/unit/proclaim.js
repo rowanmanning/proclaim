@@ -1,4 +1,4 @@
-// jshint maxlen: 200, maxstatements: 200
+// jshint maxlen: 200
 // global beforeEach, describe, it
 (function () {
     'use strict';
