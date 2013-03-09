@@ -559,10 +559,10 @@
 
         });
 
-        describe('isNonObject()', function () {
+        describe('isNotObject()', function () {
 
             it('should be a function', function () {
-                assert.strictEqual(typeof proclaim.isNonObject, 'function');
+                assert.strictEqual(typeof proclaim.isNotObject, 'function');
             });
 
             it('should not throw when called with a non-object');
@@ -583,10 +583,10 @@
 
         });
 
-        describe('isNonString()', function () {
+        describe('isNotString()', function () {
 
             it('should be a function', function () {
-                assert.strictEqual(typeof proclaim.isNonString, 'function');
+                assert.strictEqual(typeof proclaim.isNotString, 'function');
             });
 
             it('should not throw when called with a non-string');
