@@ -732,9 +732,13 @@
                 assert.strictEqual(typeof proclaim.match, 'function');
             });
 
-            it('should not throw when called with a matching value and regexp');
+            it('should not throw when called with a matching value and regexp', function () {
+                assert.doesNotThrow(function () { proclaim.match('foo', /f[a-z]o/); });
+            });
 
-            it('should throw when called with a non-matching value and regexp');
+            it('should throw when called with a non-matching value and regexp', function () {
+                assert.throws(function () { proclaim.match('bar', /f[a-z]o/); }, proclaim.AssertionError);
+            });
 
         });
 
@@ -744,9 +748,13 @@
                 assert.strictEqual(typeof proclaim.notMatch, 'function');
             });
 
-            it('should not throw when called with a non-matching value and regexp');
+            it('should not throw when called with a non-matching value and regexp', function () {
+                assert.doesNotThrow(function () { proclaim.notMatch('bar', /f[a-z]o/); });
+            });
 
-            it('should throw when called with a matching value and regexp');
+            it('should throw when called with a matching value and regexp', function () {
+                assert.throws(function () { proclaim.notMatch('foo', /f[a-z]o/); }, proclaim.AssertionError);
+            });
 
         });
 
