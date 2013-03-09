@@ -1,4 +1,4 @@
-// jshint maxlen: 200
+// jshint maxlen: 200, maxstatements: 200
 // global beforeEach, describe, it
 (function () {
     'use strict';
@@ -270,6 +270,260 @@
                     }, 'bar');
                 }, proclaim.AssertionError);
             });
+
+        });
+
+        describe('.doesNotThrow()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a function which does not throw');
+
+            it('should throw when called with a function which does throw');
+
+            it('should not throw when thrown error does not match the expected error');
+
+            it('should throw when thrown error matches the expected error');
+
+        });
+
+        describe('isTypeOf()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a matching value and type');
+
+            it('should throw when called with an unmatching value and type');
+
+        });
+
+        describe('isNotTypeOf()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with an umatching value and type');
+
+            it('should throw when called with a matching value and type');
+
+        });
+
+        describe('isInstanceOf()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a matching value and constructor');
+
+            it('should throw when called with an unmatching value and constructor');
+
+        });
+
+        describe('isNotInstanceOf()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with an umatching value and constructor');
+
+            it('should throw when called with a matching value and constructor');
+
+        });
+
+        describe('isArray()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with an array');
+
+            it('should throw when called with a non-array');
+
+        });
+
+        describe('isNotArray()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a non-array');
+
+            it('should throw when called with an array');
+
+        });
+
+        describe('isBoolean()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a boolean');
+
+            it('should throw when called with a non-boolean');
+
+        });
+
+        describe('isNotBoolean()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a non-boolean');
+
+            it('should throw when called with a boolean');
+
+        });
+
+        describe('isTrue()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with true');
+
+            it('should throw when called with a non-true value');
+
+        });
+
+        describe('isFalse()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with false');
+
+            it('should throw when called with a non-false value');
+
+        });
+
+        describe('isFunction()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a function');
+
+            it('should throw when called with a non-function');
+
+        });
+
+        describe('isNotFunction()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a non-function');
+
+            it('should throw when called with a function');
+
+        });
+
+        describe('isNull()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a null value');
+
+            it('should throw when called with a non-null value');
+
+        });
+
+        describe('isNotNull()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a non-null value');
+
+            it('should throw when called with a null value');
+
+        });
+
+        describe('isNumber()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a number');
+
+            it('should throw when called with a non-number');
+
+        });
+
+        describe('isNotNumber()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a non-number');
+
+            it('should throw when called with a number');
+
+        });
+
+        describe('isObject()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with an object');
+
+            it('should throw when called with a non-object');
+
+        });
+
+        describe('isNonObject()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a non-object');
+
+            it('should throw when called with an object');
+
+        });
+
+        describe('isString()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a string');
+
+            it('should throw when called with a non-string');
+
+        });
+
+        describe('isNonString()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a non-string');
+
+            it('should throw when called with a string');
+
+        });
+
+        describe('isUndefined()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with an undefined value');
+
+            it('should throw when called with a defined value');
+
+        });
+
+        describe('isDefined()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a defined value');
+
+            it('should throw when called with an undefined value');
+
+        });
+
+        describe('match()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a matching value and regexp');
+
+            it('should throw when called with a non-matching value and regexp');
+
+        });
+
+        describe('notMatch()', function () {
+
+            it('should be a function');
+
+            it('should not throw when called with a non-matching value and regexp');
+
+            it('should throw when called with a matching value and regexp');
 
         });
 
