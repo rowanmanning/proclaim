@@ -183,6 +183,12 @@
                 }, proclaim.AssertionError, 'test3');
             });
 
+            it('should not throw when keys are in a different order', function () {
+                assert.doesNotThrow(function () {
+                    proclaim.deepEqual({ hello: 1, goodbye: 1 }, { goodbye: 1, hello: 1 });
+                });
+            });
+
         });
 
         describe('.notDeepEqual()', function () {
