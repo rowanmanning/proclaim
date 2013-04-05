@@ -1,6 +1,6 @@
 {
     "name": "proclaim",
-    "version": "1.0.1",
+    "version": "1.0.2",
 
     "description": "A simple assertion library for server and client side JavaScript",
     "keywords": [ "assert", "test" ],
