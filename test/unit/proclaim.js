@@ -801,6 +801,104 @@
 
         });
 
+        describe('includes()', function () {
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.includes, 'function');
+            });
+
+            describe('given an array', function () {
+                it('should throw if "needle" is not found', function () {
+                    assert.throws(function () {
+                        proclaim.includes([ 1, 2, 3 ], 4);
+                    }, proclaim.AssertionError);
+                });
+
+                it('should not throw if "needle" is found', function () {
+                    assert.doesNotThrow(function () {
+                        proclaim.includes([ 1, 2, 3, 4 ], 4);
+                    });
+                });
+            });
+
+            describe('given a string', function () {
+                it('should throw if "needle" is not found', function () {
+                    assert.throws(function () {
+                        proclaim.includes('hello', 'world');
+                    }, proclaim.AssertionError);
+                });
+
+                it('should not throw if "needle" is found', function () {
+                    assert.doesNotThrow(function () {
+                        proclaim.includes('hello world', 'world');
+                    });
+                });
+            });
+
+            describe('given an object', function () {
+                it('should throw if the "needle" property is not found', function () {
+                    assert.throws(function () {
+                        proclaim.includes({ hello: true }, 'world');
+                    }, proclaim.AssertionError);
+                });
+
+                it('should not throw if the "needle" property is found', function () {
+                    assert.doesNotThrow(function () {
+                        proclaim.includes({ hello: true, world: false }, 'world');
+                    });
+                });
+
+            });
+        });
+
+        describe('doesNotInclude()', function () {
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.doesNotInclude, 'function');
+            });
+
+            describe('given an array', function () {
+                it('should throw if "needle" is not found', function () {
+                    assert.doesNotThrow(function () {
+                        proclaim.doesNotInclude([ 1, 2, 3 ], 4);
+                    });
+                });
+
+                it('should not throw if "needle" is found', function () {
+                    assert.throws(function () {
+                        proclaim.doesNotInclude([ 1, 2, 3, 4 ], 4);
+                    }, proclaim.AssertionError);
+                });
+            });
+
+            describe('given a string', function () {
+                it('should throw if "needle" is not found', function () {
+                    assert.doesNotThrow(function () {
+                        proclaim.doesNotInclude('hello', 'world');
+                    });
+                });
+
+                it('should not throw if "needle" is found', function () {
+                    assert.throws(function () {
+                        proclaim.doesNotInclude('hello world', 'world');
+                    }, proclaim.AssertionError);
+                });
+            });
+
+            describe('given an object', function () {
+                it('should throw if the "needle" property is not found', function () {
+                    assert.doesNotThrow(function () {
+                        proclaim.doesNotInclude({ hello: true }, 'world');
+                    });
+                });
+
+                it('should not throw if the "needle" property is found', function () {
+                    assert.throws(function () {
+                        proclaim.doesNotInclude({ hello: true, world: false }, 'world');
+                    }, proclaim.AssertionError);
+                });
+
+            });
+        });
+
     });
 
 } ());
