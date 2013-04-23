@@ -241,6 +241,15 @@ Assert that `actual` matches the RegExp in `expected`.
 Assert that `actual` does not match the RegExp in `expected`.
 
 
+### proclaim.includes( haystack, needle, [message] )
+
+Assert that `haystack` contains `needle`. For strings and arrays, this asserts that `indexOf` returns a value other than `-1`. For objects, this method asserts that `needle` is the name of a property on `haystack`.
+
+
+### proclaim.doesNotInclude( haystack, needle, [message] )
+
+Assert that `haystack` does not contain `needle`. See [proclaim.includes](#proclaimincludes-haystack-needle-message-).
+
 
 Development
 -----------
