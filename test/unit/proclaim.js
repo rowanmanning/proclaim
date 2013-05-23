@@ -912,6 +912,42 @@
 
         });
 
+        describe('length()', function() {
+            it('should throw if "obj" has a greater length', function () {
+                assert.throws(function () {
+                    proclaim.length([ 1, 2, 3, 4], 2);
+                }, proclaim.AssertionError);
+            });
+            it('should throw if "obj" has a lesser length', function () {
+                assert.throws(function () {
+                    proclaim.length([ 1, 2, 3, 4], 6);
+                }, proclaim.AssertionError);
+            });
+            it('should throw if "obj" has no length', function () {
+                assert.throws(function () {
+                    proclaim.length(null, 1);
+                });
+            });
+            it('should not throw if "obj" has the expected length', function () {
+                proclaim.length([], 0);
+                proclaim.length([ 1 ], 1);
+                proclaim.length([ 1, 2 ], 2);
+                proclaim.length([ 1, 2, 3 ], 3);
+            });
+            it('should work with strings', function () {
+                proclaim.length('', 0);
+                proclaim.length('1', 1);
+                proclaim.length('12', 2);
+                proclaim.length('123', 3);
+            });
+            it('should work with arguments', function (done) {
+                (function () {
+                    proclaim.length(arguments, 6);
+                    done();
+                }('a', 1, 'b', 2, 'c', 3));
+            });
+        });
+
     });
 
 } ());
