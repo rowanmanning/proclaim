@@ -287,6 +287,7 @@ Proclaim is licensed under the [MIT][mit] license.
 
 
 
+[bower]: http://bower.io/
 [chai]: http://chaijs.com/
 [commonjs-unit]: http://wiki.commonjs.org/wiki/Unit_Testing/1.0#Assert
 [component]: https://github.com/component/component
