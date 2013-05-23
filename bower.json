@@ -1,0 +1,14 @@
+{
+    "name": "proclaim",
+    "version": "1.2.0",
+
+    "description": "A simple assertion library for server and client side JavaScript",
+    "keywords": [ "assert", "test" ],
+    "author": "Rowan Manning (http://rowanmanning.co.uk/)",
+    "license": "MIT",
+
+    "homepage": "https://github.com/rowanmanning/proclaim",
+    "bugs": "https://github.com/rowanmanning/proclaim/issues",
+
+    "main": "./lib/proclaim.js"
+}

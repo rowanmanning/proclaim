@@ -27,9 +27,10 @@ You can use Proclaim on the server side with [Node.js][node] and npm:
 $ npm install proclaim
 ```
 
-On the client side, you can either install Proclaim through [Component][component]:
+On the client side, you can either install Proclaim through [Bower][bower]/[Component][component]:
 
 ```sh
+$ bower install proclaim
 $ component install rowanmanning/proclaim
 ```
 
