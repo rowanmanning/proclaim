@@ -949,4 +949,12 @@
 
     });
 
+    it('should throw descriptive errors', function () {
+        try {
+            proclaim.equal(1, 2);
+        } catch (err) {
+            proclaim.isNotNull(err.message);
+        }
+    });
+
 } ());
