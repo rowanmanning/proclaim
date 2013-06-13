@@ -4,7 +4,7 @@ Proclaim
 
 A simple assertion library for server and client side JavaScript. Proclaim can be used with most test frameworks.
 
-**Current Version:** *1.2.2*  
+**Current Version:** *1.3.0*  
 **Build Status:** [![Build Status][travis-status]][travis]  
 **Node Support:** *0.6, 0.8, 0.10*  
 **Browser Support:** *Android Browser 2.2–4.2, Firefox 3.6, Firefox 4–19, Google Chrome 14–25, Internet Explorer 6–10, Mobile Safari iOS 3–6, Opera 12.10, Safari 5–6*
