@@ -32,38 +32,44 @@
             });
 
             describe('instance', function () {
-                var opts, err;
+                var optsWithMessage, errWithMessage, optsWithNoMessage, errWithNoMessage;
 
                 beforeEach(function () {
-                    opts = {
+                    optsWithMessage = {
                         message: 'foo',
                         actual: 'bar',
                         expected: 'baz',
                         operator: '==='
                     };
-                    err = new proclaim.AssertionError(opts);
+                    errWithMessage = new proclaim.AssertionError(optsWithMessage);
+                    optsWithNoMessage = {
+                        message: null,
+                        actual: 'bar',
+                        expected: 'baz',
+                        operator: '==='
+                    };
+                    errWithNoMessage = new proclaim.AssertionError(optsWithNoMessage);
                 });
 
                 it('should extend the Error object', function () {
-                    assert.strictEqual(err instanceof Error, true);
+                    assert.strictEqual(errWithMessage instanceof Error, true);
                 });
 
                 it('should save the expected options as instance properties', function () {
-                    assert.strictEqual(err.message, opts.message);
-                    assert.strictEqual(err.actual, opts.actual);
-                    assert.strictEqual(err.expected, opts.expected);
-                    assert.strictEqual(err.operator, opts.operator);
+                    assert.strictEqual(errWithMessage.message, optsWithMessage.message);
+                    assert.strictEqual(errWithMessage.actual, optsWithMessage.actual);
+                    assert.strictEqual(errWithMessage.expected, optsWithMessage.expected);
+                    assert.strictEqual(errWithMessage.operator, optsWithMessage.operator);
                 });
 
                 describe('#toString()', function () {
 
                     it('should return a string representation of the message', function () {
-                        assert.strictEqual('' + err, 'AssertionError: foo');
+                        assert.strictEqual('' + errWithMessage, 'AssertionError: foo');
                     });
 
                     it('should return a string representation of the error when no message is set', function () {
-                        err.message = null;
-                        assert.strictEqual('' + err, 'AssertionError: bar === baz');
+                        assert.strictEqual('' + errWithNoMessage, 'AssertionError: bar === baz');
                     });
 
                 });
