@@ -195,6 +195,19 @@
                 });
             });
 
+            it('should handle RegExps', function () {
+                assert.throws(function () {
+                    var a = new RegExp('goodbye', 'g'),
+                        b = /goodbye/gi,
+                        c = new RegExp('hello', 'g'),
+                        d = /hello/i;
+
+                    proclaim.deepEqual(a, a);
+                    proclaim.deepEqual(a, b);
+                    proclaim.deepEqual(a, c);
+                    proclaim.deepEqual(a, d);
+                });
+            });
         });
 
         describe('.notDeepEqual()', function () {
