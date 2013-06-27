@@ -195,6 +195,28 @@
                 });
             });
 
+            it('should handle RegExps', function () {
+                var a = new RegExp('goodbye', 'g'),
+                    b = /goodbye/gi,
+                    c = new RegExp('hello', 'g'),
+                    d = /hello/i,
+                    e = new RegExp('hello', 'i');
+
+                assert.doesNotThrow(function () {
+                    proclaim.deepEqual(a, a);
+                });
+
+                assert.throws(function () {
+                    proclaim.deepEqual(a, b);
+                    proclaim.deepEqual(a, c);
+                    proclaim.deepEqual(a, d);
+                    proclaim.deepEqual(a, e);
+                });
+
+                assert.doesNotThrow(function () {
+                    proclaim.deepEqual(d, e);
+                });
+            });
         });
 
         describe('.notDeepEqual()', function () {
