@@ -952,31 +952,31 @@
 
         });
 
-        describe('length()', function() {
+        describe('lengthEquals()', function() {
 
             it('should be a function', function () {
-                assert.strictEqual(typeof proclaim.length, 'function');
+                assert.strictEqual(typeof proclaim.lengthEquals, 'function');
             });
 
             it('should not throw when called with an object which has the expected length property', function () {
-                assert.doesNotThrow(function () { proclaim.length({length: 3}, 3); });
+                assert.doesNotThrow(function () { proclaim.lengthEquals({length: 3}, 3); });
             });
 
             it('should throw when called with an object that has a lower or higher length property value', function () {
-                assert.throws(function () { proclaim.length({length: 2}, 3); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.length({length: 4}, 3); }, proclaim.AssertionError);
+                assert.throws(function () { proclaim.lengthEquals({length: 2}, 3); }, proclaim.AssertionError);
+                assert.throws(function () { proclaim.lengthEquals({length: 4}, 3); }, proclaim.AssertionError);
             });
 
             it('should throw when called with an object that has no length property', function () {
-                assert.throws(function () { proclaim.length({}, 3); }, proclaim.AssertionError);
+                assert.throws(function () { proclaim.lengthEquals({}, 3); }, proclaim.AssertionError);
             });
 
             it('should throw when called with unexpected types', function () {
-                assert.throws(function () { proclaim.length(null, 3); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.length(undefined, 3); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.length(NaN, 3); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.length(true, 3); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.length(2, 3); }, proclaim.AssertionError);
+                assert.throws(function () { proclaim.lengthEquals(null, 3); }, proclaim.AssertionError);
+                assert.throws(function () { proclaim.lengthEquals(undefined, 3); }, proclaim.AssertionError);
+                assert.throws(function () { proclaim.lengthEquals(NaN, 3); }, proclaim.AssertionError);
+                assert.throws(function () { proclaim.lengthEquals(true, 3); }, proclaim.AssertionError);
+                assert.throws(function () { proclaim.lengthEquals(2, 3); }, proclaim.AssertionError);
             });
 
         });

@@ -255,7 +255,7 @@ Assert that `haystack` contains `needle`. For strings and arrays, this asserts t
 Assert that `haystack` does not contain `needle`. See [proclaim.includes](#proclaimincludes-haystack-needle-message-).
 
 
-### proclaim.length( value, expected, [message] )
+### proclaim.lengthEquals( value, expected, [message] )
 
 Assert that `value.length === expected`.
 
