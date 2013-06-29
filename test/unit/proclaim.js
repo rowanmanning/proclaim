@@ -202,20 +202,12 @@
                     d = /hello/i,
                     e = new RegExp('hello', 'i');
 
-                assert.doesNotThrow(function () {
-                    proclaim.deepEqual(a, a);
-                });
-
-                assert.throws(function () {
-                    proclaim.deepEqual(a, b);
-                    proclaim.deepEqual(a, c);
-                    proclaim.deepEqual(a, d);
-                    proclaim.deepEqual(a, e);
-                });
-
-                assert.doesNotThrow(function () {
-                    proclaim.deepEqual(d, e);
-                });
+                assert.doesNotThrow(function () { proclaim.deepEqual(a, a); });
+                assert.doesNotThrow(function () { proclaim.deepEqual(d, e); });
+                assert.throws(function () { proclaim.deepEqual(a, b); });
+                assert.throws(function () { proclaim.deepEqual(a, c); });
+                assert.throws(function () { proclaim.deepEqual(a, d); });
+                assert.throws(function () { proclaim.deepEqual(a, e); });
             });
         });
 
