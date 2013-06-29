@@ -21,8 +21,12 @@
             }, 0);
         });
 
-        it('should be an object', function () {
-            assert.strictEqual(typeof proclaim, 'object');
+        it('should be a function', function () {
+            assert.strictEqual(typeof proclaim, 'function');
+        });
+
+        it('should alias proclaim.ok', function () {
+            assert.strictEqual(proclaim, proclaim.ok);
         });
 
         describe('.AssertionError()', function () {
