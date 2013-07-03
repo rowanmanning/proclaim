@@ -124,6 +124,26 @@
 
         });
 
+        describe('.notOk()', function () {
+
+            it('should be a function', function () {
+                assert.strictEqual(typeof proclaim.notOk, 'function');
+            });
+
+            it('should not throw when called with falsy values', function () {
+                assert.doesNotThrow(function () { proclaim.notOk(false); });
+                assert.doesNotThrow(function () { proclaim.notOk(0); });
+                assert.doesNotThrow(function () { proclaim.notOk(''); });
+            });
+
+            it('should throw when called with truthy values', function () {
+                assert.throws(function () { proclaim.notOk(true); }, proclaim.AssertionError);
+                assert.throws(function () { proclaim.notOk(1); }, proclaim.AssertionError);
+                assert.throws(function () { proclaim.notOk('foo'); }, proclaim.AssertionError);
+            });
+
+        });
+
         describe('.equal()', function () {
 
             it('should be a function', function () {
