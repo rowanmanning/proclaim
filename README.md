@@ -77,6 +77,9 @@ proclaim.fail('foo', 'bar', 'Foo equals bar', '===');
 
 Assert that `value` is truthy.
 
+### proclaim.notOk( value, [message] )
+
+Assert that `value` is falsy.
 
 ### proclaim.equal( actual, expected, [message] )
 
