@@ -4,7 +4,7 @@
     'use strict';
 
     // Dependencies
-    var assert = require('assert');
+    var assert = require('proclaim');
 
     // Test subject
     var proclaim = require('../../lib/proclaim');
