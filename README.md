@@ -263,7 +263,7 @@ Assert that `value.length === expected`.
 Development
 -----------
 
-To develop Proclaim, you'll need to clone the repo and install dependencies with `make deps`. If you're on Windows, you'll also need to install [Make for Windows][make].
+To develop Proclaim, you'll need to clone the repo and install dependencies with `make deps`. If you're on Windows, you're probably best off using [Cygwin][cygwin] or similar.
 
 Once you're set up, you can run the following commands:
 
@@ -294,7 +294,7 @@ Proclaim is licensed under the [MIT][mit] license.
 [chai]: http://chaijs.com/
 [commonjs-unit]: http://wiki.commonjs.org/wiki/Unit_Testing/1.0#Assert
 [component]: https://github.com/component/component
-[make]: http://gnuwin32.sourceforge.net/packages/make.htm
+[cygwin]: http://www.cygwin.com/
 [mit]: http://opensource.org/licenses/mit-license.php
 [node]: http://nodejs.org/
 [node-assert]: http://nodejs.org/api/assert.html
