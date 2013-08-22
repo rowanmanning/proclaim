@@ -12,6 +12,22 @@
     // Test suite
     describe('proclaim', function () {
 
+        // Helper function to call a function with specified args
+        function callFn (fn) {
+            var args = Array.prototype.slice.call(arguments, 1);
+            return function () {
+                return fn.apply(this, args);
+            };
+        }
+
+        // Helper functions for testing throws/doesNotThrow
+        function throwingFunction () {
+            throw new Error('foo');
+        }
+        function nonThrowingFunction () {
+            return 'foo';
+        }
+
         beforeEach(function (done) {
             // Nasty hack to prevent stack space errors in IE
             // https://github.com/visionmedia/mocha/issues/502
@@ -89,7 +105,7 @@
             });
 
             it('should throw an AssertionError', function () {
-                assert.throws(function () { proclaim.fail('foo', 'bar'); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.fail, 'foo', 'bar'), proclaim.AssertionError);
             });
 
             describe('error', function () {
@@ -115,15 +131,15 @@
             });
 
             it('should not throw when called with truthy values', function () {
-                assert.doesNotThrow(function () { proclaim.ok(true); });
-                assert.doesNotThrow(function () { proclaim.ok(1); });
-                assert.doesNotThrow(function () { proclaim.ok('foo'); });
+                assert.doesNotThrow(callFn(proclaim.ok, true));
+                assert.doesNotThrow(callFn(proclaim.ok, 1));
+                assert.doesNotThrow(callFn(proclaim.ok, 'foo'));
             });
 
             it('should throw when called with falsy values', function () {
-                assert.throws(function () { proclaim.ok(false); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.ok(0); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.ok(''); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.ok, false), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.ok, 0), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.ok, ''), proclaim.AssertionError);
             });
 
         });
@@ -135,15 +151,15 @@
             });
 
             it('should not throw when called with falsy values', function () {
-                assert.doesNotThrow(function () { proclaim.notOk(false); });
-                assert.doesNotThrow(function () { proclaim.notOk(0); });
-                assert.doesNotThrow(function () { proclaim.notOk(''); });
+                assert.doesNotThrow(callFn(proclaim.notOk, false));
+                assert.doesNotThrow(callFn(proclaim.notOk, 0));
+                assert.doesNotThrow(callFn(proclaim.notOk, ''));
             });
 
             it('should throw when called with truthy values', function () {
-                assert.throws(function () { proclaim.notOk(true); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.notOk(1); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.notOk('foo'); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.notOk, true), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.notOk, 1), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.notOk, 'foo'), proclaim.AssertionError);
             });
 
         });
@@ -155,15 +171,15 @@
             });
 
             it('should not throw when called with equal values', function () {
-                assert.doesNotThrow(function () { proclaim.equal(true, true); });
-                assert.doesNotThrow(function () { proclaim.equal(true, 1); });
-                assert.doesNotThrow(function () { proclaim.equal('123', 123); });
+                assert.doesNotThrow(callFn(proclaim.equal, true, true));
+                assert.doesNotThrow(callFn(proclaim.equal, true, 1));
+                assert.doesNotThrow(callFn(proclaim.equal, '123', 123));
             });
 
             it('should throw when called with inequal values', function () {
-                assert.throws(function () { proclaim.equal(true, false); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.equal(true, 0); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.equal('foo', 123); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.equal, true, false), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.equal, true, 0), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.equal, 'foo', 123), proclaim.AssertionError);
             });
 
         });
@@ -175,15 +191,15 @@
             });
 
             it('should not throw when called with inequal values', function () {
-                assert.doesNotThrow(function () { proclaim.notEqual(true, false); });
-                assert.doesNotThrow(function () { proclaim.notEqual(true, 0); });
-                assert.doesNotThrow(function () { proclaim.notEqual('foo', 123); });
+                assert.doesNotThrow(callFn(proclaim.notEqual, true, false));
+                assert.doesNotThrow(callFn(proclaim.notEqual, true, 0));
+                assert.doesNotThrow(callFn(proclaim.notEqual, 'foo', 123));
             });
 
             it('should throw when called with equal values', function () {
-                assert.throws(function () { proclaim.notEqual(true, true); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.notEqual(true, 1); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.notEqual('123', 123); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.notEqual, true, true), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.notEqual, true, 1), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.notEqual, '123', 123), proclaim.AssertionError);
             });
 
         });
@@ -196,27 +212,21 @@
 
             it('should not throw when called with deeply equal values', function () {
                 var date = new Date();
-                assert.doesNotThrow(function () { proclaim.deepEqual(true, true); });
-                assert.doesNotThrow(function () { proclaim.deepEqual(date, date); });
-                assert.doesNotThrow(function () {
-                    proclaim.deepEqual({foo: 'bar', bar: ['baz']}, {foo: 'bar', bar: ['baz']});
-                });
-                assert.doesNotThrow(function () { proclaim.deepEqual(arguments, arguments); });
+                assert.doesNotThrow(callFn(proclaim.deepEqual, true, true));
+                assert.doesNotThrow(callFn(proclaim.deepEqual, date, date));
+                assert.doesNotThrow(callFn(proclaim.deepEqual, {foo: 'bar', bar: ['baz']}, {foo: 'bar', bar: ['baz']}));
+                assert.doesNotThrow(callFn(proclaim.deepEqual, arguments, arguments));
                 // Todo: write some more thorough tests for this
             });
 
             it('should throw when called with deeply inequal values', function () {
-                assert.throws(function () { proclaim.deepEqual(true, false); }, proclaim.AssertionError, 'test1');
-                assert.throws(function () { proclaim.deepEqual(new Date(), new Date(1000)); }, proclaim.AssertionError, 'test2');
-                assert.throws(function () {
-                    proclaim.deepEqual({foo: 'bar', bar: ['baz']}, {bar: 'baz', baz: ['qux']});
-                }, proclaim.AssertionError, 'test3');
+                assert.throws(callFn(proclaim.deepEqual, true, false), proclaim.AssertionError, 'test1');
+                assert.throws(callFn(proclaim.deepEqual, new Date(), new Date(1000)), proclaim.AssertionError, 'test2');
+                assert.throws(callFn(proclaim.deepEqual, {foo: 'bar', bar: ['baz']}, {bar: 'baz', baz: ['qux']}), proclaim.AssertionError, 'test3');
             });
 
             it('should not throw when keys are in a different order', function () {
-                assert.doesNotThrow(function () {
-                    proclaim.deepEqual({ hello: 1, goodbye: 1 }, { goodbye: 1, hello: 1 });
-                });
+                assert.doesNotThrow(callFn(proclaim.deepEqual, { hello: 1, goodbye: 1 }, { goodbye: 1, hello: 1 }));
             });
 
             it('should handle RegExps', function () {
@@ -226,12 +236,12 @@
                     d = /hello/i,
                     e = new RegExp('hello', 'i');
 
-                assert.doesNotThrow(function () { proclaim.deepEqual(a, a); });
-                assert.doesNotThrow(function () { proclaim.deepEqual(d, e); });
-                assert.throws(function () { proclaim.deepEqual(a, b); });
-                assert.throws(function () { proclaim.deepEqual(a, c); });
-                assert.throws(function () { proclaim.deepEqual(a, d); });
-                assert.throws(function () { proclaim.deepEqual(a, e); });
+                assert.doesNotThrow(callFn(proclaim.deepEqual, a, a));
+                assert.doesNotThrow(callFn(proclaim.deepEqual, d, e));
+                assert.throws(callFn(proclaim.deepEqual, a, b));
+                assert.throws(callFn(proclaim.deepEqual, a, c));
+                assert.throws(callFn(proclaim.deepEqual, a, d));
+                assert.throws(callFn(proclaim.deepEqual, a, e));
             });
         });
 
@@ -242,21 +252,17 @@
             });
 
             it('should not throw when called with deeply inequal values', function () {
-                assert.doesNotThrow(function () { proclaim.notDeepEqual(true, false); });
-                assert.doesNotThrow(function () { proclaim.notDeepEqual(new Date(), new Date(1000)); });
-                assert.doesNotThrow(function () {
-                    proclaim.notDeepEqual({foo: 'bar', bar: ['baz']}, {bar: 'baz', baz: ['qux']});
-                });
+                assert.doesNotThrow(callFn(proclaim.notDeepEqual, true, false));
+                assert.doesNotThrow(callFn(proclaim.notDeepEqual, new Date(), new Date(1000)));
+                assert.doesNotThrow(callFn(proclaim.notDeepEqual, {foo: 'bar', bar: ['baz']}, {bar: 'baz', baz: ['qux']}));
             });
 
             it('should throw when called with deeply equal values', function () {
                 var date = new Date();
-                assert.throws(function () { proclaim.notDeepEqual(true, true); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.notDeepEqual(date, date); }, proclaim.AssertionError);
-                assert.throws(function () {
-                    proclaim.notDeepEqual({foo: 'bar', bar: ['baz']}, {foo: 'bar', bar: ['baz']});
-                }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.notDeepEqual(arguments, arguments); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.notDeepEqual, true, true), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.notDeepEqual, date, date), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.notDeepEqual, {foo: 'bar', bar: ['baz']}, {foo: 'bar', bar: ['baz']}), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.notDeepEqual, arguments, arguments), proclaim.AssertionError);
             });
 
         });
@@ -268,15 +274,15 @@
             });
 
             it('should not throw when called with strictly equal values', function () {
-                assert.doesNotThrow(function () { proclaim.strictEqual(true, true); });
-                assert.doesNotThrow(function () { proclaim.strictEqual(1, 1); });
-                assert.doesNotThrow(function () { proclaim.strictEqual('foo', 'foo'); });
+                assert.doesNotThrow(callFn(proclaim.strictEqual, true, true));
+                assert.doesNotThrow(callFn(proclaim.strictEqual, 1, 1));
+                assert.doesNotThrow(callFn(proclaim.strictEqual, 'foo', 'foo'));
             });
 
             it('should throw when called with strictly inequal values', function () {
-                assert.throws(function () { proclaim.strictEqual(true, false); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.strictEqual(true, 1); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.strictEqual('123', 123); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.strictEqual, true, false), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.strictEqual, true, 1), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.strictEqual, '123', 123), proclaim.AssertionError);
             });
 
         });
@@ -288,15 +294,15 @@
             });
 
             it('should not throw when called with strictly inequal values', function () {
-                assert.doesNotThrow(function () { proclaim.notStrictEqual(true, false); });
-                assert.doesNotThrow(function () { proclaim.notStrictEqual(true, 1); });
-                assert.doesNotThrow(function () { proclaim.notStrictEqual('123', 123); });
+                assert.doesNotThrow(callFn(proclaim.notStrictEqual, true, false));
+                assert.doesNotThrow(callFn(proclaim.notStrictEqual, true, 1));
+                assert.doesNotThrow(callFn(proclaim.notStrictEqual, '123', 123));
             });
 
             it('should throw when called with strictly equal values', function () {
-                assert.throws(function () { proclaim.notStrictEqual(true, true); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.notStrictEqual(1, 1); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.notStrictEqual('foo', 'foo'); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.notStrictEqual, true, true), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.notStrictEqual, 1, 1), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.notStrictEqual, 'foo', 'foo'), proclaim.AssertionError);
             });
 
         });
@@ -309,53 +315,23 @@
             });
 
             it('should not throw when called with a function which does throw', function () {
-                assert.doesNotThrow(function () {
-                    proclaim.throws(function () {
-                        throw new Error('foo');
-                    });
-                });
+                assert.doesNotThrow(callFn(proclaim.throws, throwingFunction));
             });
 
             it('should throw when called with a function which does not throw', function () {
-                assert.throws(function () {
-                    proclaim.throws(function () {});
-                }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.throws, nonThrowingFunction), proclaim.AssertionError);
             });
 
             it('should not throw when thrown error matches the expected error', function () {
-                assert.doesNotThrow(function () {
-                    proclaim.throws(function () {
-                        throw new Error('foo');
-                    }, Error);
-                });
-                assert.doesNotThrow(function () {
-                    proclaim.throws(function () {
-                        throw new Error('foo');
-                    }, /foo/);
-                });
-                assert.doesNotThrow(function () {
-                    proclaim.throws(function () {
-                        throw new Error('foo');
-                    }, 'foo');
-                });
+                assert.doesNotThrow(callFn(proclaim.throws, throwingFunction, Error));
+                assert.doesNotThrow(callFn(proclaim.throws, throwingFunction, /foo/));
+                assert.doesNotThrow(callFn(proclaim.throws, throwingFunction, 'foo'));
             });
 
             it('should throw when thrown error does not match the expected error', function () {
-                assert.throws(function () {
-                    proclaim.throws(function () {
-                        throw new Error('foo');
-                    }, proclaim.AssertionError);
-                }, proclaim.AssertionError);
-                assert.throws(function () {
-                    proclaim.throws(function () {
-                        throw new Error('foo');
-                    }, /bar/);
-                }, proclaim.AssertionError);
-                assert.throws(function () {
-                    proclaim.throws(function () {
-                        throw new Error('foo');
-                    }, 'bar');
-                }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.throws, throwingFunction, proclaim.AssertionError), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.throws, throwingFunction, /bar/), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.throws, throwingFunction, 'bar'), proclaim.AssertionError);
             });
 
         });
@@ -367,53 +343,23 @@
             });
 
             it('should not throw when called with a function which does not throw', function () {
-                assert.doesNotThrow(function () {
-                    proclaim.doesNotThrow(function () {});
-                });
+                assert.doesNotThrow(callFn(proclaim.doesNotThrow, nonThrowingFunction));
             });
 
             it('should throw when called with a function which does throw', function () {
-                assert.throws(function () {
-                    proclaim.doesNotThrow(function () {
-                        throw new Error('foo');
-                    });
-                }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.doesNotThrow, throwingFunction), proclaim.AssertionError);
             });
 
             it('should not throw when thrown error does not match the expected error', function () {
-                assert.doesNotThrow(function () {
-                    proclaim.doesNotThrow(function () {
-                        throw new Error('foo');
-                    }, proclaim.AssertionError);
-                });
-                assert.doesNotThrow(function () {
-                    proclaim.doesNotThrow(function () {
-                        throw new Error('foo');
-                    }, /bar/);
-                });
-                assert.doesNotThrow(function () {
-                    proclaim.doesNotThrow(function () {
-                        throw new Error('foo');
-                    }, 'bar');
-                });
+                assert.doesNotThrow(callFn(proclaim.doesNotThrow, throwingFunction, proclaim.AssertionError));
+                assert.doesNotThrow(callFn(proclaim.doesNotThrow, throwingFunction, /bar/));
+                assert.doesNotThrow(callFn(proclaim.doesNotThrow, throwingFunction, 'bar'));
             });
 
             it('should throw when thrown error matches the expected error', function () {
-                assert.throws(function () {
-                    proclaim.doesNotThrow(function () {
-                        throw new Error('foo');
-                    }, Error);
-                }, proclaim.AssertionError);
-                assert.throws(function () {
-                    proclaim.doesNotThrow(function () {
-                        throw new Error('foo');
-                    }, /foo/);
-                }, proclaim.AssertionError);
-                assert.throws(function () {
-                    proclaim.doesNotThrow(function () {
-                        throw new Error('foo');
-                    }, 'foo');
-                }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.doesNotThrow, throwingFunction, Error), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.doesNotThrow, throwingFunction, /foo/), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.doesNotThrow, throwingFunction, 'foo'), proclaim.AssertionError);
             });
 
         });
@@ -425,15 +371,15 @@
             });
 
             it('should not throw when called with a matching value and type', function () {
-                assert.doesNotThrow(function () { proclaim.isTypeOf(true, 'boolean'); });
-                assert.doesNotThrow(function () { proclaim.isTypeOf('foo', 'string'); });
-                assert.doesNotThrow(function () { proclaim.isTypeOf([], 'object'); });
+                assert.doesNotThrow(callFn(proclaim.isTypeOf, true, 'boolean'));
+                assert.doesNotThrow(callFn(proclaim.isTypeOf, 'foo', 'string'));
+                assert.doesNotThrow(callFn(proclaim.isTypeOf, [], 'object'));
             });
 
             it('should throw when called with an unmatching value and type', function () {
-                assert.throws(function () { proclaim.isTypeOf(true, 'undefined'); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isTypeOf('foo', 'number'); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isTypeOf([], 'function'); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isTypeOf, true, 'undefined'), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isTypeOf, 'foo', 'number'), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isTypeOf, [], 'function'), proclaim.AssertionError);
             });
 
         });
@@ -445,15 +391,15 @@
             });
 
             it('should not throw when called with an umatching value and type', function () {
-                assert.doesNotThrow(function () { proclaim.isNotTypeOf(true, 'undefined'); });
-                assert.doesNotThrow(function () { proclaim.isNotTypeOf('foo', 'number'); });
-                assert.doesNotThrow(function () { proclaim.isNotTypeOf([], 'function'); });
+                assert.doesNotThrow(callFn(proclaim.isNotTypeOf, true, 'undefined'));
+                assert.doesNotThrow(callFn(proclaim.isNotTypeOf, 'foo', 'number'));
+                assert.doesNotThrow(callFn(proclaim.isNotTypeOf, [], 'function'));
             });
 
             it('should throw when called with a matching value and type', function () {
-                assert.throws(function () { proclaim.isNotTypeOf(true, 'boolean'); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isNotTypeOf('foo', 'string'); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isNotTypeOf([], 'object'); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNotTypeOf, true, 'boolean'), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNotTypeOf, 'foo', 'string'), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNotTypeOf, [], 'object'), proclaim.AssertionError);
             });
 
         });
@@ -465,11 +411,11 @@
             });
 
             it('should not throw when called with a matching value and constructor', function () {
-                assert.doesNotThrow(function () { proclaim.isInstanceOf(new Date(), Date); });
+                assert.doesNotThrow(callFn(proclaim.isInstanceOf, new Date(), Date));
             });
 
             it('should throw when called with an unmatching value and constructor', function () {
-                assert.throws(function () { proclaim.isInstanceOf({}, Date); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isInstanceOf, {}, Date), proclaim.AssertionError);
             });
 
         });
@@ -481,11 +427,11 @@
             });
 
             it('should not throw when called with an umatching value and constructor', function () {
-                assert.doesNotThrow(function () { proclaim.isNotInstanceOf({}, Date); });
+                assert.doesNotThrow(callFn(proclaim.isNotInstanceOf, {}, Date));
             });
 
             it('should throw when called with a matching value and constructor', function () {
-                assert.throws(function () { proclaim.isNotInstanceOf(new Date(), Date); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNotInstanceOf, new Date(), Date), proclaim.AssertionError);
             });
 
         });
@@ -497,13 +443,13 @@
             });
 
             it('should not throw when called with an array', function () {
-                assert.doesNotThrow(function () { proclaim.isArray([]); });
+                assert.doesNotThrow(callFn(proclaim.isArray, []));
             });
 
             it('should throw when called with a non-array', function () {
-                assert.throws(function () { proclaim.isArray(null); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isArray('foo'); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isArray({}); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isArray, null), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isArray, 'foo'), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isArray, {}), proclaim.AssertionError);
             });
 
         });
@@ -515,13 +461,13 @@
             });
 
             it('should not throw when called with a non-array', function () {
-                assert.doesNotThrow(function () { proclaim.isNotArray(null); });
-                assert.doesNotThrow(function () { proclaim.isNotArray('foo'); });
-                assert.doesNotThrow(function () { proclaim.isNotArray({}); });
+                assert.doesNotThrow(callFn(proclaim.isNotArray, null));
+                assert.doesNotThrow(callFn(proclaim.isNotArray, 'foo'));
+                assert.doesNotThrow(callFn(proclaim.isNotArray, {}));
             });
 
             it('should throw when called with an array', function () {
-                assert.throws(function () { proclaim.isNotArray([]); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNotArray, []), proclaim.AssertionError);
             });
 
         });
@@ -533,14 +479,14 @@
             });
 
             it('should not throw when called with a boolean', function () {
-                assert.doesNotThrow(function () { proclaim.isBoolean(true); });
-                assert.doesNotThrow(function () { proclaim.isBoolean(false); });
+                assert.doesNotThrow(callFn(proclaim.isBoolean, true));
+                assert.doesNotThrow(callFn(proclaim.isBoolean, false));
             });
 
             it('should throw when called with a non-boolean', function () {
-                assert.throws(function () { proclaim.isBoolean(null); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isBoolean('foo'); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isBoolean({}); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isBoolean, null), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isBoolean, 'foo'), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isBoolean, {}), proclaim.AssertionError);
             });
 
         });
@@ -552,14 +498,14 @@
             });
 
             it('should not throw when called with a non-boolean', function () {
-                assert.doesNotThrow(function () { proclaim.isNotBoolean(null); });
-                assert.doesNotThrow(function () { proclaim.isNotBoolean('foo'); });
-                assert.doesNotThrow(function () { proclaim.isNotBoolean({}); });
+                assert.doesNotThrow(callFn(proclaim.isNotBoolean, null));
+                assert.doesNotThrow(callFn(proclaim.isNotBoolean, 'foo'));
+                assert.doesNotThrow(callFn(proclaim.isNotBoolean, {}));
             });
 
             it('should throw when called with a boolean', function () {
-                assert.throws(function () { proclaim.isNotBoolean(true); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isNotBoolean(false); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNotBoolean, true), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNotBoolean, false), proclaim.AssertionError);
             });
 
         });
@@ -571,12 +517,12 @@
             });
 
             it('should not throw when called with true', function () {
-                assert.doesNotThrow(function () { proclaim.isTrue(true); });
+                assert.doesNotThrow(callFn(proclaim.isTrue, true));
             });
 
             it('should throw when called with a non-true value', function () {
-                assert.throws(function () { proclaim.isTrue(false); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isTrue(1); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isTrue, false), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isTrue, 1), proclaim.AssertionError);
             });
 
         });
@@ -588,13 +534,13 @@
             });
 
             it('should not throw when called with false', function () {
-                assert.doesNotThrow(function () { proclaim.isFalse(false); });
+                assert.doesNotThrow(callFn(proclaim.isFalse, false));
             });
 
             it('should throw when called with a non-false value', function () {
-                assert.throws(function () { proclaim.isFalse(true); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isFalse(0); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isFalse(null); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isFalse, true), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isFalse, 0), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isFalse, null), proclaim.AssertionError);
             });
 
         });
@@ -610,9 +556,9 @@
             });
 
             it('should throw when called with a non-function', function () {
-                assert.throws(function () { proclaim.isFunction(null); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isFunction('foo'); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isFunction({}); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isFunction, null), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isFunction, 'foo'), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isFunction, {}), proclaim.AssertionError);
             });
 
         });
@@ -624,13 +570,13 @@
             });
 
             it('should not throw when called with a non-function', function () {
-                assert.doesNotThrow(function () { proclaim.isNotFunction(null); });
-                assert.doesNotThrow(function () { proclaim.isNotFunction('foo'); });
-                assert.doesNotThrow(function () { proclaim.isNotFunction({}); });
+                assert.doesNotThrow(callFn(proclaim.isNotFunction, null));
+                assert.doesNotThrow(callFn(proclaim.isNotFunction, 'foo'));
+                assert.doesNotThrow(callFn(proclaim.isNotFunction, {}));
             });
 
             it('should throw when called with a function', function () {
-                assert.throws(function () { proclaim.isNotFunction(function () {}); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNotFunction, function () {}), proclaim.AssertionError);
             });
 
         });
@@ -642,13 +588,13 @@
             });
 
             it('should not throw when called with a null value', function () {
-                assert.doesNotThrow(function () { proclaim.isNull(null); });
+                assert.doesNotThrow(callFn(proclaim.isNull, null));
             });
 
             it('should throw when called with a non-null value', function () {
-                assert.throws(function () { proclaim.isNull(undefined); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isNull('foo'); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isNull({}); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNull, undefined), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNull, 'foo'), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNull, {}), proclaim.AssertionError);
             });
 
         });
@@ -660,13 +606,13 @@
             });
 
             it('should not throw when called with a non-null value', function () {
-                assert.doesNotThrow(function () { proclaim.isNotNull(undefined); });
-                assert.doesNotThrow(function () { proclaim.isNotNull('foo'); });
-                assert.doesNotThrow(function () { proclaim.isNotNull({}); });
+                assert.doesNotThrow(callFn(proclaim.isNotNull, undefined));
+                assert.doesNotThrow(callFn(proclaim.isNotNull, 'foo'));
+                assert.doesNotThrow(callFn(proclaim.isNotNull, {}));
             });
 
             it('should throw when called with a null value', function () {
-                assert.throws(function () { proclaim.isNotNull(null); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNotNull, null), proclaim.AssertionError);
             });
 
         });
@@ -678,13 +624,13 @@
             });
 
             it('should not throw when called with a number', function () {
-                assert.doesNotThrow(function () { proclaim.isNumber(123); });
+                assert.doesNotThrow(callFn(proclaim.isNumber, 123));
             });
 
             it('should throw when called with a non-number', function () {
-                assert.throws(function () { proclaim.isNumber(null); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isNumber('foo'); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isNumber({}); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNumber, null), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNumber, 'foo'), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNumber, {}), proclaim.AssertionError);
             });
 
         });
@@ -696,13 +642,13 @@
             });
 
             it('should not throw when called with a non-number', function () {
-                assert.doesNotThrow(function () { proclaim.isNotNumber(null); });
-                assert.doesNotThrow(function () { proclaim.isNotNumber('foo'); });
-                assert.doesNotThrow(function () { proclaim.isNotNumber({}); });
+                assert.doesNotThrow(callFn(proclaim.isNotNumber, null));
+                assert.doesNotThrow(callFn(proclaim.isNotNumber, 'foo'));
+                assert.doesNotThrow(callFn(proclaim.isNotNumber, {}));
             });
 
             it('should throw when called with a number', function () {
-                assert.throws(function () { proclaim.isNotNumber(123); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNotNumber, 123), proclaim.AssertionError);
             });
 
         });
@@ -714,13 +660,13 @@
             });
 
             it('should not throw when called with an object', function () {
-                assert.doesNotThrow(function () { proclaim.isObject({}); });
+                assert.doesNotThrow(callFn(proclaim.isObject, {}));
             });
 
             it('should throw when called with a non-object', function () {
-                assert.throws(function () { proclaim.isObject(undefined); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isObject('foo'); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isObject(123); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isObject, undefined), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isObject, 'foo'), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isObject, 123), proclaim.AssertionError);
             });
 
         });
@@ -732,13 +678,13 @@
             });
 
             it('should not throw when called with a non-object', function () {
-                assert.doesNotThrow(function () { proclaim.isNotObject(undefined); });
-                assert.doesNotThrow(function () { proclaim.isNotObject('foo'); });
-                assert.doesNotThrow(function () { proclaim.isNotObject(123); });
+                assert.doesNotThrow(callFn(proclaim.isNotObject, undefined));
+                assert.doesNotThrow(callFn(proclaim.isNotObject, 'foo'));
+                assert.doesNotThrow(callFn(proclaim.isNotObject, 123));
             });
 
             it('should throw when called with an object', function () {
-                assert.throws(function () { proclaim.isNotObject({}); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNotObject, {}), proclaim.AssertionError);
             });
 
         });
@@ -750,13 +696,13 @@
             });
 
             it('should not throw when called with a string', function () {
-                assert.doesNotThrow(function () { proclaim.isString('foo'); });
+                assert.doesNotThrow(callFn(proclaim.isString, 'foo'));
             });
 
             it('should throw when called with a non-string', function () {
-                assert.throws(function () { proclaim.isString(null); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isString(123); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isString({}); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isString, null), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isString, 123), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isString, {}), proclaim.AssertionError);
             });
 
         });
@@ -768,13 +714,13 @@
             });
 
             it('should not throw when called with a non-string', function () {
-                assert.doesNotThrow(function () { proclaim.isNotString(null); });
-                assert.doesNotThrow(function () { proclaim.isNotString(123); });
-                assert.doesNotThrow(function () { proclaim.isNotString({}); });
+                assert.doesNotThrow(callFn(proclaim.isNotString, null));
+                assert.doesNotThrow(callFn(proclaim.isNotString, 123));
+                assert.doesNotThrow(callFn(proclaim.isNotString, {}));
             });
 
             it('should throw when called with a string', function () {
-                assert.throws(function () { proclaim.isNotString('foo'); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isNotString, 'foo'), proclaim.AssertionError);
             });
 
         });
@@ -786,13 +732,13 @@
             });
 
             it('should not throw when called with an undefined value', function () {
-                assert.doesNotThrow(function () { proclaim.isUndefined(undefined); });
+                assert.doesNotThrow(callFn(proclaim.isUndefined, undefined));
             });
 
             it('should throw when called with a defined value', function () {
-                assert.throws(function () { proclaim.isUndefined(null); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isUndefined('foo'); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.isUndefined({}); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isUndefined, null), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isUndefined, 'foo'), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isUndefined, {}), proclaim.AssertionError);
             });
 
         });
@@ -804,11 +750,11 @@
             });
 
             it('should not throw when called with a defined value', function () {
-                assert.doesNotThrow(function () { proclaim.isDefined(null); });
+                assert.doesNotThrow(callFn(proclaim.isDefined, null));
             });
 
             it('should throw when called with an undefined value', function () {
-                assert.throws(function () { proclaim.isDefined(undefined); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.isDefined, undefined), proclaim.AssertionError);
             });
 
         });
@@ -820,11 +766,11 @@
             });
 
             it('should not throw when called with a matching value and regexp', function () {
-                assert.doesNotThrow(function () { proclaim.match('foo', /f[a-z]o/); });
+                assert.doesNotThrow(callFn(proclaim.match, 'foo', /f[a-z]o/));
             });
 
             it('should throw when called with a non-matching value and regexp', function () {
-                assert.throws(function () { proclaim.match('bar', /f[a-z]o/); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.match, 'bar', /f[a-z]o/), proclaim.AssertionError);
             });
 
         });
@@ -836,11 +782,11 @@
             });
 
             it('should not throw when called with a non-matching value and regexp', function () {
-                assert.doesNotThrow(function () { proclaim.notMatch('bar', /f[a-z]o/); });
+                assert.doesNotThrow(callFn(proclaim.notMatch, 'bar', /f[a-z]o/));
             });
 
             it('should throw when called with a matching value and regexp', function () {
-                assert.throws(function () { proclaim.notMatch('foo', /f[a-z]o/); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.notMatch, 'foo', /f[a-z]o/), proclaim.AssertionError);
             });
 
         });
@@ -854,15 +800,11 @@
             describe('given an array', function () {
 
                 it('should throw if "needle" is not found', function () {
-                    assert.throws(function () {
-                        proclaim.includes([ 1, 2, 3 ], 4);
-                    }, proclaim.AssertionError);
+                    assert.throws(callFn(proclaim.includes, [ 1, 2, 3 ], 4), proclaim.AssertionError);
                 });
 
                 it('should not throw if "needle" is found', function () {
-                    assert.doesNotThrow(function () {
-                        proclaim.includes([ 1, 2, 3, 4 ], 4);
-                    });
+                    assert.doesNotThrow(callFn(proclaim.includes, [ 1, 2, 3, 4 ], 4));
                 });
 
             });
@@ -870,15 +812,11 @@
             describe('given a string', function () {
 
                 it('should throw if "needle" is not found', function () {
-                    assert.throws(function () {
-                        proclaim.includes('hello', 'world');
-                    }, proclaim.AssertionError);
+                    assert.throws(callFn(proclaim.includes, 'hello', 'world'), proclaim.AssertionError);
                 });
 
                 it('should not throw if "needle" is found', function () {
-                    assert.doesNotThrow(function () {
-                        proclaim.includes('hello world', 'world');
-                    });
+                    assert.doesNotThrow(callFn(proclaim.includes, 'hello world', 'world'));
                 });
 
             });
@@ -886,15 +824,11 @@
             describe('given an object', function () {
 
                 it('should throw if the "needle" property is not found', function () {
-                    assert.throws(function () {
-                        proclaim.includes({ hello: true }, 'world');
-                    }, proclaim.AssertionError);
+                    assert.throws(callFn(proclaim.includes, { hello: true }, 'world'), proclaim.AssertionError);
                 });
 
                 it('should not throw if the "needle" property is found', function () {
-                    assert.doesNotThrow(function () {
-                        proclaim.includes({ hello: true, world: false }, 'world');
-                    });
+                    assert.doesNotThrow(callFn(proclaim.includes, { hello: true, world: false }, 'world'));
                 });
 
             });
@@ -909,15 +843,11 @@
             describe('given an array', function () {
 
                 it('should throw if "needle" is not found', function () {
-                    assert.doesNotThrow(function () {
-                        proclaim.doesNotInclude([ 1, 2, 3 ], 4);
-                    });
+                    assert.doesNotThrow(callFn(proclaim.doesNotInclude, [ 1, 2, 3 ], 4));
                 });
 
                 it('should not throw if "needle" is found', function () {
-                    assert.throws(function () {
-                        proclaim.doesNotInclude([ 1, 2, 3, 4 ], 4);
-                    }, proclaim.AssertionError);
+                    assert.throws(callFn(proclaim.doesNotInclude, [ 1, 2, 3, 4 ], 4), proclaim.AssertionError);
                 });
 
             });
@@ -925,15 +855,11 @@
             describe('given a string', function () {
 
                 it('should throw if "needle" is not found', function () {
-                    assert.doesNotThrow(function () {
-                        proclaim.doesNotInclude('hello', 'world');
-                    });
+                    assert.doesNotThrow(callFn(proclaim.doesNotInclude, 'hello', 'world'));
                 });
 
                 it('should not throw if "needle" is found', function () {
-                    assert.throws(function () {
-                        proclaim.doesNotInclude('hello world', 'world');
-                    }, proclaim.AssertionError);
+                    assert.throws(callFn(proclaim.doesNotInclude, 'hello world', 'world'), proclaim.AssertionError);
                 });
 
             });
@@ -941,15 +867,11 @@
             describe('given an object', function () {
 
                 it('should throw if the "needle" property is not found', function () {
-                    assert.doesNotThrow(function () {
-                        proclaim.doesNotInclude({ hello: true }, 'world');
-                    });
+                    assert.doesNotThrow(callFn(proclaim.doesNotInclude, { hello: true }, 'world'));
                 });
 
                 it('should not throw if the "needle" property is found', function () {
-                    assert.throws(function () {
-                        proclaim.doesNotInclude({ hello: true, world: false }, 'world');
-                    }, proclaim.AssertionError);
+                    assert.throws(callFn(proclaim.doesNotInclude, { hello: true, world: false }, 'world'), proclaim.AssertionError);
                 });
 
             });
@@ -963,24 +885,24 @@
             });
 
             it('should not throw when called with an object which has the expected length property', function () {
-                assert.doesNotThrow(function () { proclaim.lengthEquals({length: 3}, 3); });
+                assert.doesNotThrow(callFn(proclaim.lengthEquals, {length: 3}, 3));
             });
 
             it('should throw when called with an object that has a lower or higher length property value', function () {
-                assert.throws(function () { proclaim.lengthEquals({length: 2}, 3); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.lengthEquals({length: 4}, 3); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.lengthEquals, {length: 2}, 3), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.lengthEquals, {length: 4}, 3), proclaim.AssertionError);
             });
 
             it('should throw when called with an object that has no length property', function () {
-                assert.throws(function () { proclaim.lengthEquals({}, 3); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.lengthEquals, {}, 3), proclaim.AssertionError);
             });
 
             it('should throw when called with unexpected types', function () {
-                assert.throws(function () { proclaim.lengthEquals(null, 3); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.lengthEquals(undefined, 3); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.lengthEquals(NaN, 3); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.lengthEquals(true, 3); }, proclaim.AssertionError);
-                assert.throws(function () { proclaim.lengthEquals(2, 3); }, proclaim.AssertionError);
+                assert.throws(callFn(proclaim.lengthEquals, null, 3), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.lengthEquals, undefined, 3), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.lengthEquals, NaN, 3), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.lengthEquals, true, 3), proclaim.AssertionError);
+                assert.throws(callFn(proclaim.lengthEquals, 2, 3), proclaim.AssertionError);
             });
 
         });
