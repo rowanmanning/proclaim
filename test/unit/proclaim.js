@@ -3,30 +3,26 @@
 (function () {
     'use strict';
 
-    // Dependencies
     var assert = require('proclaim');
-
-    // Test subject
     var proclaim = require('../../lib/proclaim');
 
-    // Test suite
+    // Helper function to call a function with specified args
+    function callFn (fn) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        return function () {
+            return fn.apply(this, args);
+        };
+    }
+
+    // Helper functions for testing throws/doesNotThrow
+    function throwingFunction () {
+        throw new Error('foo');
+    }
+    function nonThrowingFunction () {
+        return 'foo';
+    }
+
     describe('proclaim', function () {
-
-        // Helper function to call a function with specified args
-        function callFn (fn) {
-            var args = Array.prototype.slice.call(arguments, 1);
-            return function () {
-                return fn.apply(this, args);
-            };
-        }
-
-        // Helper functions for testing throws/doesNotThrow
-        function throwingFunction () {
-            throw new Error('foo');
-        }
-        function nonThrowingFunction () {
-            return 'foo';
-        }
 
         beforeEach(function (done) {
             // Nasty hack to prevent stack space errors in IE
@@ -307,7 +303,6 @@
 
         });
 
-        // This is about to get more confusing than I though possible...
         describe('.throws()', function () {
 
             it('should be a function', function () {
