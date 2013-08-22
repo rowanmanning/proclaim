@@ -282,6 +282,12 @@ Assert that `actual > expected`.
 Assert that `actual >= expected`.
 
 
+Legacy
+------
+
+If you're still using a `1.x` version of Proclaim, you're advised to upgrade to `2.x`. The `1.x` branch will be maintained for the forseeable future, but it will not get any new features. You can [view the `1.x` source code here][1.x].
+
+
 Development
 -----------
 
@@ -312,6 +318,7 @@ Proclaim is licensed under the [MIT][mit] license.
 
 
 
+[1.x]: https://github.com/rowanmanning/proclaim/tree/1.x
 [bower]: http://bower.io/
 [chai]: http://chaijs.com/
 [commonjs-unit]: http://wiki.commonjs.org/wiki/Unit_Testing/1.0#Assert
