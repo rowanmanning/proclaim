@@ -77,9 +77,11 @@ proclaim.fail('foo', 'bar', 'Foo equals bar', '===');
 
 Assert that `value` is truthy.
 
+
 ### proclaim.notOk( value, [message] )
 
 Assert that `value` is falsy.
+
 
 ### proclaim.equal( actual, expected, [message] )
 
@@ -258,6 +260,26 @@ Assert that `haystack` does not contain `needle`. See [proclaim.includes](#procl
 ### proclaim.lengthEquals( value, expected, [message] )
 
 Assert that `value.length === expected`.
+
+
+### proclaim.lessThan( actual, expected, [message] )
+
+Assert that `actual < expected`.
+
+
+### proclaim.lessThanOrEqual( actual, expected, [message] )
+
+Assert that `actual <= expected`.
+
+
+### proclaim.greaterThan( actual, expected, [message] )
+
+Assert that `actual > expected`.
+
+
+### proclaim.greaterThanOrEqual( actual, expected, [message] )
+
+Assert that `actual >= expected`.
 
 
 Development

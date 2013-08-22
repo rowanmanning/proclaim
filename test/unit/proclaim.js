@@ -902,6 +902,74 @@
 
         });
 
+        describe('.lessThan()', function () {
+
+            it('should be a function', function () {
+                assert.isFunction(proclaim.lessThan);
+            });
+
+            it('should not throw when called with a value that is less than the expected value', function () {
+                assert.doesNotThrow(callFn(proclaim.lessThan, 1, 2));
+            });
+
+            it('should throw when called with a value that is greater than or equal to the expected value', function () {
+                assert.throws(callFn(proclaim.lessThan, 2, 1));
+                assert.throws(callFn(proclaim.lessThan, 1, 1));
+            });
+
+        });
+
+        describe('.lessThanOrEqual()', function () {
+
+            it('should be a function', function () {
+                assert.isFunction(proclaim.lessThanOrEqual);
+            });
+
+            it('should not throw when called with a value that is less than or equal to the expected value', function () {
+                assert.doesNotThrow(callFn(proclaim.lessThanOrEqual, 1, 2));
+                assert.doesNotThrow(callFn(proclaim.lessThanOrEqual, 1, 1));
+            });
+
+            it('should throw when called with a value that is greater than the expected value', function () {
+                assert.throws(callFn(proclaim.lessThanOrEqual, 2, 1));
+            });
+
+        });
+
+        describe('.greaterThan()', function () {
+
+            it('should be a function', function () {
+                assert.isFunction(proclaim.greaterThan);
+            });
+
+            it('should not throw when called with a value that is greater than the expected value', function () {
+                assert.doesNotThrow(callFn(proclaim.greaterThan, 2, 1));
+            });
+
+            it('should throw when called with a value that is less than or equal to the expected value', function () {
+                assert.throws(callFn(proclaim.greaterThan, 1, 2));
+                assert.throws(callFn(proclaim.greaterThan, 1, 1));
+            });
+
+        });
+
+        describe('.greaterThanOrEqual()', function () {
+
+            it('should be a function', function () {
+                assert.isFunction(proclaim.greaterThanOrEqual);
+            });
+
+            it('should not throw when called with a value that is greater than or equal to the expected value', function () {
+                assert.doesNotThrow(callFn(proclaim.greaterThanOrEqual, 2, 1));
+                assert.doesNotThrow(callFn(proclaim.greaterThanOrEqual, 1, 1));
+            });
+
+            it('should throw when called with a value that is less than the expected value', function () {
+                assert.throws(callFn(proclaim.greaterThanOrEqual, 1, 2));
+            });
+
+        });
+
     });
 
 } ());
