@@ -3,8 +3,8 @@
 (function () {
     'use strict';
 
-    var assert = require('proclaim');
-    var proclaim = require('../../lib/proclaim');
+    var assert = require('..');
+    var proclaim = require('..');
 
     // Helper function to call a function with specified args
     function callFn (fn) {

@@ -2,7 +2,7 @@
 (function (root) {
     'use strict';
 
-    var proclaim = ok;
+    var assert = ok;
 
 
     // Assertions as outlined in
@@ -15,10 +15,10 @@
             fail(val, true, msg, '==');
         }
     }
-    proclaim.ok = ok;
+    assert.ok = ok;
 
     // Assert that two values are equal
-    proclaim.equal = function (actual, expected, msg) {
+    assert.equal = function (actual, expected, msg) {
         /* jshint eqeqeq: false */
         if (actual != expected) {
             fail(actual, expected, msg, '==');
@@ -26,7 +26,7 @@
     };
 
     // Assert that two values are not equal
-    proclaim.notEqual = function (actual, expected, msg) {
+    assert.notEqual = function (actual, expected, msg) {
         /* jshint eqeqeq: false */
         if (actual == expected) {
             fail(actual, expected, msg, '!=');
@@ -34,35 +34,35 @@
     };
 
     // Assert that two values are equal with strict comparison
-    proclaim.strictEqual = function (actual, expected, msg) {
+    assert.strictEqual = function (actual, expected, msg) {
         if (actual !== expected) {
             fail(actual, expected, msg, '===');
         }
     };
 
     // Assert that two values are not equal with strict comparison
-    proclaim.notStrictEqual = function (actual, expected, msg) {
+    assert.notStrictEqual = function (actual, expected, msg) {
         if (actual === expected) {
             fail(actual, expected, msg, '!==');
         }
     };
 
     // Assert that two values are deeply equal
-    proclaim.deepEqual = function (actual, expected, msg) {
+    assert.deepEqual = function (actual, expected, msg) {
         if (!isDeepEqual(actual, expected)) {
             fail(actual, expected, msg, 'deepEqual');
         }
     };
 
     // Assert that two values are not deeply equal
-    proclaim.notDeepEqual = function (actual, expected, msg) {
+    assert.notDeepEqual = function (actual, expected, msg) {
         if (isDeepEqual(actual, expected)) {
             fail(actual, expected, msg, '!deepEqual');
         }
     };
 
     // Assert that a function throws an error
-    proclaim.throws = function (fn, expected, msg) {
+    assert.throws = function (fn, expected, msg) {
         if (!functionThrows(fn, expected)) {
             fail(fn, expected, msg, 'throws');
         }
@@ -73,167 +73,167 @@
     // ---------------------
 
     // Assert that a value is falsy
-    proclaim.notOk = function (val, msg) {
+    assert.notOk = function (val, msg) {
         if (!!val) {
             fail(val, true, msg, '!=');
         }
     };
 
     // Assert that a function does not throw an error
-    proclaim.doesNotThrow = function (fn, expected, msg) {
+    assert.doesNotThrow = function (fn, expected, msg) {
         if (functionThrows(fn, expected)) {
             fail(fn, expected, msg, '!throws');
         }
     };
 
     // Assert that a value is a specific type
-    proclaim.isTypeOf = function (val, type, msg) {
-        proclaim.strictEqual(typeof val, type, msg);
+    assert.isTypeOf = function (val, type, msg) {
+        assert.strictEqual(typeof val, type, msg);
     };
 
     // Assert that a value is not a specific type
-    proclaim.isNotTypeOf = function (val, type, msg) {
-        proclaim.notStrictEqual(typeof val, type, msg);
+    assert.isNotTypeOf = function (val, type, msg) {
+        assert.notStrictEqual(typeof val, type, msg);
     };
 
     // Assert that a value is an instance of a constructor
-    proclaim.isInstanceOf = function (val, constructor, msg) {
+    assert.isInstanceOf = function (val, constructor, msg) {
         if (!(val instanceof constructor)) {
             fail(val, constructor, msg, 'instanceof');
         }
     };
 
     // Assert that a value not an instance of a constructor
-    proclaim.isNotInstanceOf = function (val, constructor, msg) {
+    assert.isNotInstanceOf = function (val, constructor, msg) {
         if (val instanceof constructor) {
             fail(val, constructor, msg, '!instanceof');
         }
     };
 
     // Assert that a value is an array
-    proclaim.isArray = function (val, msg) {
+    assert.isArray = function (val, msg) {
         if (!isArray(val)) {
             fail(typeof val, 'array', msg, '===');
         }
     };
 
     // Assert that a value is not an array
-    proclaim.isNotArray = function (val, msg) {
+    assert.isNotArray = function (val, msg) {
         if (isArray(val)) {
             fail(typeof val, 'array', msg, '!==');
         }
     };
 
     // Assert that a value is a boolean
-    proclaim.isBoolean = function (val, msg) {
-        proclaim.isTypeOf(val, 'boolean', msg);
+    assert.isBoolean = function (val, msg) {
+        assert.isTypeOf(val, 'boolean', msg);
     };
 
     // Assert that a value is not a boolean
-    proclaim.isNotBoolean = function (val, msg) {
-        proclaim.isNotTypeOf(val, 'boolean', msg);
+    assert.isNotBoolean = function (val, msg) {
+        assert.isNotTypeOf(val, 'boolean', msg);
     };
 
     // Assert that a value is true
-    proclaim.isTrue = function (val, msg) {
-        proclaim.strictEqual(val, true, msg);
+    assert.isTrue = function (val, msg) {
+        assert.strictEqual(val, true, msg);
     };
 
     // Assert that a value is false
-    proclaim.isFalse = function (val, msg) {
-        proclaim.strictEqual(val, false, msg);
+    assert.isFalse = function (val, msg) {
+        assert.strictEqual(val, false, msg);
     };
 
     // Assert that a value is a function
-    proclaim.isFunction = function (val, msg) {
-        proclaim.isTypeOf(val, 'function', msg);
+    assert.isFunction = function (val, msg) {
+        assert.isTypeOf(val, 'function', msg);
     };
 
     // Assert that a value is not a function
-    proclaim.isNotFunction = function (val, msg) {
-        proclaim.isNotTypeOf(val, 'function', msg);
+    assert.isNotFunction = function (val, msg) {
+        assert.isNotTypeOf(val, 'function', msg);
     };
 
     // Assert that a value is null
-    proclaim.isNull = function (val, msg) {
-        proclaim.strictEqual(val, null, msg);
+    assert.isNull = function (val, msg) {
+        assert.strictEqual(val, null, msg);
     };
 
     // Assert that a value is not null
-    proclaim.isNotNull = function (val, msg) {
-        proclaim.notStrictEqual(val, null, msg);
+    assert.isNotNull = function (val, msg) {
+        assert.notStrictEqual(val, null, msg);
     };
 
     // Assert that a value is a number
-    proclaim.isNumber = function (val, msg) {
-        proclaim.isTypeOf(val, 'number', msg);
+    assert.isNumber = function (val, msg) {
+        assert.isTypeOf(val, 'number', msg);
     };
 
     // Assert that a value is not a number
-    proclaim.isNotNumber = function (val, msg) {
-        proclaim.isNotTypeOf(val, 'number', msg);
+    assert.isNotNumber = function (val, msg) {
+        assert.isNotTypeOf(val, 'number', msg);
     };
 
     // Assert that a value is an object
-    proclaim.isObject = function (val, msg) {
-        proclaim.isTypeOf(val, 'object', msg);
+    assert.isObject = function (val, msg) {
+        assert.isTypeOf(val, 'object', msg);
     };
 
     // Assert that a value is not an object
-    proclaim.isNotObject = function (val, msg) {
-        proclaim.isNotTypeOf(val, 'object', msg);
+    assert.isNotObject = function (val, msg) {
+        assert.isNotTypeOf(val, 'object', msg);
     };
 
     // Assert that a value is a string
-    proclaim.isString = function (val, msg) {
-        proclaim.isTypeOf(val, 'string', msg);
+    assert.isString = function (val, msg) {
+        assert.isTypeOf(val, 'string', msg);
     };
 
     // Assert that a value is not a string
-    proclaim.isNotString = function (val, msg) {
-        proclaim.isNotTypeOf(val, 'string', msg);
+    assert.isNotString = function (val, msg) {
+        assert.isNotTypeOf(val, 'string', msg);
     };
 
     // Assert that a value is undefined
-    proclaim.isUndefined = function (val, msg) {
-        proclaim.isTypeOf(val, 'undefined', msg);
+    assert.isUndefined = function (val, msg) {
+        assert.isTypeOf(val, 'undefined', msg);
     };
 
     // Assert that a value is defined
-    proclaim.isDefined = function (val, msg) {
-        proclaim.isNotTypeOf(val, 'undefined', msg);
+    assert.isDefined = function (val, msg) {
+        assert.isNotTypeOf(val, 'undefined', msg);
     };
 
     // Assert that a value matches a regular expression
-    proclaim.match = function (actual, expected, msg) {
+    assert.match = function (actual, expected, msg) {
         if (!expected.test(actual)) {
             fail(actual, expected, msg, 'match');
         }
     };
 
     // Assert that a value does not match a regular expression
-    proclaim.notMatch = function (actual, expected, msg) {
+    assert.notMatch = function (actual, expected, msg) {
         if (expected.test(actual)) {
             fail(actual, expected, msg, '!match');
         }
     };
 
     // Assert that an object includes something
-    proclaim.includes = function (haystack, needle, msg) {
+    assert.includes = function (haystack, needle, msg) {
         if (!includes(haystack, needle)) {
             fail(haystack, needle, msg, 'include');
         }
     };
 
     // Assert that an object does not include something
-    proclaim.doesNotInclude = function (haystack, needle, msg) {
+    assert.doesNotInclude = function (haystack, needle, msg) {
         if (includes(haystack, needle)) {
             fail(haystack, needle, msg, '!include');
         }
     };
 
     // Assert that an object (Array, String, etc.) has the expected length
-    proclaim.lengthEquals = function (obj, expected, msg) {
+    assert.lengthEquals = function (obj, expected, msg) {
         if (isUndefinedOrNull(obj)) {
             return fail(void 0, expected, msg, 'length');
         }
@@ -243,28 +243,28 @@
     };
 
     // Assert that a value is less than another value
-    proclaim.lessThan = function (actual, expected, msg) {
+    assert.lessThan = function (actual, expected, msg) {
         if (actual >= expected) {
             fail(actual, expected, msg, '<');
         }
     };
 
     // Assert that a value is less than or equal to another value
-    proclaim.lessThanOrEqual = function (actual, expected, msg) {
+    assert.lessThanOrEqual = function (actual, expected, msg) {
         if (actual > expected) {
             fail(actual, expected, msg, '<=');
         }
     };
 
     // Assert that a value is greater than another value
-    proclaim.greaterThan = function (actual, expected, msg) {
+    assert.greaterThan = function (actual, expected, msg) {
         if (actual <= expected) {
             fail(actual, expected, msg, '>');
         }
     };
 
     // Assert that a value is greater than another value
-    proclaim.greaterThanOrEqual = function (actual, expected, msg) {
+    assert.greaterThanOrEqual = function (actual, expected, msg) {
         if (actual < expected) {
             fail(actual, expected, msg, '>=');
         }
@@ -315,8 +315,8 @@
     }
 
     // Expose error handling tools
-    proclaim.AssertionError = AssertionError;
-    proclaim.fail = fail;
+    assert.AssertionError = AssertionError;
+    assert.fail = fail;
 
 
     // Utilities
@@ -503,16 +503,16 @@
     // AMD
     if (typeof define !== 'undefined' && define.amd) {
         define([], function () {
-            return proclaim;
+            return assert;
         });
     }
     // CommonJS
     else if (typeof module !== 'undefined' && module.exports) {
-        module.exports = proclaim;
+        module.exports = assert;
     }
     // Script tag
     else {
-        root.proclaim = proclaim;
+        root.assert = assert;
     }
 
 
