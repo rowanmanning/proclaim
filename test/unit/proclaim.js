@@ -786,20 +786,20 @@
 
         });
 
-        describe('includes()', function () {
+        describe('include()', function () {
 
             it('should be a function', function () {
-                assert.isFunction(proclaim.includes);
+                assert.isFunction(proclaim.include);
             });
 
             describe('given an array', function () {
 
                 it('should throw if "needle" is not found', function () {
-                    assert.throws(callFn(proclaim.includes, [ 1, 2, 3 ], 4), proclaim.AssertionError);
+                    assert.throws(callFn(proclaim.include, [ 1, 2, 3 ], 4), proclaim.AssertionError);
                 });
 
                 it('should not throw if "needle" is found', function () {
-                    assert.doesNotThrow(callFn(proclaim.includes, [ 1, 2, 3, 4 ], 4));
+                    assert.doesNotThrow(callFn(proclaim.include, [ 1, 2, 3, 4 ], 4));
                 });
 
             });
@@ -807,11 +807,11 @@
             describe('given a string', function () {
 
                 it('should throw if "needle" is not found', function () {
-                    assert.throws(callFn(proclaim.includes, 'hello', 'world'), proclaim.AssertionError);
+                    assert.throws(callFn(proclaim.include, 'hello', 'world'), proclaim.AssertionError);
                 });
 
                 it('should not throw if "needle" is found', function () {
-                    assert.doesNotThrow(callFn(proclaim.includes, 'hello world', 'world'));
+                    assert.doesNotThrow(callFn(proclaim.include, 'hello world', 'world'));
                 });
 
             });
@@ -819,11 +819,11 @@
             describe('given an object', function () {
 
                 it('should throw if the "needle" property is not found', function () {
-                    assert.throws(callFn(proclaim.includes, { hello: true }, 'world'), proclaim.AssertionError);
+                    assert.throws(callFn(proclaim.include, { hello: true }, 'world'), proclaim.AssertionError);
                 });
 
                 it('should not throw if the "needle" property is found', function () {
-                    assert.doesNotThrow(callFn(proclaim.includes, { hello: true, world: false }, 'world'));
+                    assert.doesNotThrow(callFn(proclaim.include, { hello: true, world: false }, 'world'));
                 });
 
             });
