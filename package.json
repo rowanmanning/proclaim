@@ -17,10 +17,10 @@
         "node": ">=0.6"
     },
     "devDependencies": {
-        "jshint": "~2.1",
-        "mocha": "~1.11",
+        "jshint": "~2.6",
+        "mocha": "~2.2",
         "mocha-srv": "~0.1",
-        "proclaim": "~1.5"
+        "proclaim": "~2.0"
     },
 
     "main": "./lib/proclaim.js",
