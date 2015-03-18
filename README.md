@@ -6,7 +6,7 @@ A simple assertion library for server and client side JavaScript. Proclaim can b
 
 **Current Version:** *2.0.0*  
 **Build Status:** [![Build Status][travis-status]][travis]  
-**Node Support:** *0.6, 0.8, 0.10*  
+**Node Support:** *0.10, 0.12*  
 **Browser Support:** *Android Browser 2.2–4.2, Firefox 3.6, Firefox 4–22, Google Chrome 14–28, Internet Explorer 6–10, Mobile Safari iOS 3–6, Safari 5–6*
 
 
