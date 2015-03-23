@@ -15,7 +15,7 @@ Why?
 
 I've been frustrated by assertion libraries not working in all the browsers I test my code in (notably IE 6–8). Proclaim is an attempt to achieve the simplicity of [Node.js assert][node-assert] with the extra assertions of [Chai][chai].
 
-Proclaim implements all of the assertions in [CommonJS Unit Testing 1.0][commonjs-unit] which means it works as a drop-in replacement for the Node.js assert module. It also implements most of Chai's assertions so you should be able to switch quite easily.
+Proclaim implements all of the assertions in [CommonJS Unit Testing 1.0][commonjs-unit] which means it works as a drop-in replacement for the Node.js assert module. It also implements most of Chai's assertions ([see here for differences](#differences-between-proclaim-and-chai)) so you should be able to switch quite easily.
 
 
 Getting Started
@@ -298,6 +298,33 @@ Assert that `actual > expected`.
 ### proclaim.greaterThanOrEqual( actual, expected, [message] )
 
 Assert that `actual >= expected`.
+
+
+Differences Between Proclaim And Chai
+-------------------------------------
+
+Proclaim implements most of Chai's assertions, but is missing a few. The following Chai assertions are not present in proclaim:
+
+- `throw` - May implement, alias of `throws`
+- `property` - May implement
+- `notProperty` - May implement
+- `deepProperty` - May implement
+- `notDeepProperty` - May implement
+- `propertyVal` - May implement
+- `propertyNotVal` - May implement
+- `deepPropertyVal` - May implement
+- `deepPropertyNotVal` - May implement
+- `operator` - Unlikely to implement
+- `closeTo` - Unlikely to implement
+- `sameMembers` - May implement
+- `sameDeepMembers` - May implement
+- `includeMembers` - May implement
+- `changes` - Unlikely to implement
+- `doesNotChange` - Unlikely to implement
+- `increases` - Unlikely to implement
+- `doesNotIncrease` - Unlikely to implement
+- `decreases` - Unlikely to implement
+- `doesNotDecrease` - Unlikely to implement
 
 
 Legacy
