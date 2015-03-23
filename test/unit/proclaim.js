@@ -359,6 +359,12 @@
 
         });
 
+        describe('notThrows()', function () {
+            it('should alias proclaim.doesNotThrow', function () {
+                assert.strictEqual(proclaim.notThrows, proclaim.doesNotThrow);
+            });
+        });
+
         describe('isTypeOf()', function () {
 
             it('should be a function', function () {
@@ -377,6 +383,12 @@
                 assert.throws(callFn(proclaim.isTypeOf, [], 'function'), proclaim.AssertionError);
             });
 
+        });
+
+        describe('typeOf()', function () {
+            it('should alias proclaim.isTypeOf', function () {
+                assert.strictEqual(proclaim.typeOf, proclaim.isTypeOf);
+            });
         });
 
         describe('isNotTypeOf()', function () {
@@ -399,6 +411,12 @@
 
         });
 
+        describe('notTypeOf()', function () {
+            it('should alias proclaim.isNotTypeOf', function () {
+                assert.strictEqual(proclaim.notTypeOf, proclaim.isNotTypeOf);
+            });
+        });
+
         describe('isInstanceOf()', function () {
 
             it('should be a function', function () {
@@ -415,6 +433,12 @@
 
         });
 
+        describe('instanceOf()', function () {
+            it('should alias proclaim.isInstanceOf', function () {
+                assert.strictEqual(proclaim.instanceOf, proclaim.isInstanceOf);
+            });
+        });
+
         describe('isNotInstanceOf()', function () {
 
             it('should be a function', function () {
@@ -429,6 +453,12 @@
                 assert.throws(callFn(proclaim.isNotInstanceOf, new Date(), Date), proclaim.AssertionError);
             });
 
+        });
+
+        describe('notInstanceOf()', function () {
+            it('should alias proclaim.isNotInstanceOf', function () {
+                assert.strictEqual(proclaim.notInstanceOf, proclaim.isNotInstanceOf);
+            });
         });
 
         describe('isArray()', function () {
@@ -873,6 +903,12 @@
 
         });
 
+        describe('notInclude()', function () {
+            it('should alias proclaim.doesNotInclude', function () {
+                assert.strictEqual(proclaim.notInclude, proclaim.doesNotInclude);
+            });
+        });
+
         describe('lengthEquals()', function() {
 
             it('should be a function', function () {
@@ -902,6 +938,12 @@
 
         });
 
+        describe('lengthOf()', function () {
+            it('should alias proclaim.lengthEquals', function () {
+                assert.strictEqual(proclaim.lengthOf, proclaim.lengthEquals);
+            });
+        });
+
         describe('.lessThan()', function () {
 
             it('should be a function', function () {
@@ -917,6 +959,12 @@
                 assert.throws(callFn(proclaim.lessThan, 1, 1));
             });
 
+        });
+
+        describe('isBelow()', function () {
+            it('should alias proclaim.lessThan', function () {
+                assert.strictEqual(proclaim.isBelow, proclaim.lessThan);
+            });
         });
 
         describe('.lessThanOrEqual()', function () {
@@ -951,6 +999,12 @@
                 assert.throws(callFn(proclaim.greaterThan, 1, 1));
             });
 
+        });
+
+        describe('isAbove()', function () {
+            it('should alias proclaim.greaterThan', function () {
+                assert.strictEqual(proclaim.isAbove, proclaim.greaterThan);
+            });
         });
 
         describe('.greaterThanOrEqual()', function () {

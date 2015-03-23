@@ -126,25 +126,35 @@ Assert that `fn` throws an error. If `expected` is present then the thrown `erro
 
 Assert that `fn` does not throw an error. If `expected` is present then the assertion is that an error can be thrown, but it does not pass the tests outlined in `proclaim.throws`.
 
+*Aliases: `proclaim.notThrows`*
+
 
 ### proclaim.isTypeOf( actual, expected, [message] )
 
 Assert that `typeof actual === expected`.
+
+*Aliases: `proclaim.typeOf`*
 
 
 ### proclaim.isNotTypeOf( actual, expected, [message] )
 
 Assert that `typeof actual !== expected`.
 
+*Aliases: `proclaim.notTypeOf`*
+
 
 ### proclaim.isInstanceOf( actual, expected, [message] )
 
 Assert that `actual instanceof expected`.
 
+*Aliases: `proclaim.instanceOf`*
+
 
 ### proclaim.isNotInstanceOf( actual, expected, [message] )
 
 Assert that `!(actual instanceof expected)`.
+
+*Aliases: `proclaim.notInstanceOf`*
 
 
 ### proclaim.isArray( value, [message] )
@@ -256,15 +266,21 @@ Assert that `haystack` contains `needle`. For strings and arrays, this asserts t
 
 Assert that `haystack` does not contain `needle`. See [proclaim.includes](#proclaimincludes-haystack-needle-message-).
 
+*Aliases: `proclaim.notInclude`*
+
 
 ### proclaim.lengthEquals( value, expected, [message] )
 
 Assert that `value.length === expected`.
 
+*Aliases: `proclaim.lengthOf`*
+
 
 ### proclaim.lessThan( actual, expected, [message] )
 
 Assert that `actual < expected`.
+
+*Aliases: `proclaim.isBelow`*
 
 
 ### proclaim.lessThanOrEqual( actual, expected, [message] )
@@ -275,6 +291,8 @@ Assert that `actual <= expected`.
 ### proclaim.greaterThan( actual, expected, [message] )
 
 Assert that `actual > expected`.
+
+*Aliases: `proclaim.isAbove`*
 
 
 ### proclaim.greaterThanOrEqual( actual, expected, [message] )
