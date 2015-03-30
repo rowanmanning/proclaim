@@ -85,7 +85,11 @@
                     });
 
                     it('should return a string representation of the error when no message is set', function () {
-                        assert.strictEqual('' + errWithNoMessage, 'AssertionError: bar === baz');
+                        if (typeof require === 'function') {
+                            assert.strictEqual('' + errWithNoMessage, 'AssertionError: \'bar\' === \'baz\'');
+                        } else {
+                            assert.strictEqual('' + errWithNoMessage, 'AssertionError: bar === baz');
+                        }
                     });
 
                 });
