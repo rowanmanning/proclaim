@@ -4,9 +4,13 @@ Proclaim
 
 A simple assertion library for server and client side JavaScript. Proclaim can be used with most test frameworks.
 
-**Current Version:** *3.2.0*  
-**Build Status:** [![Build Status][travis-status]][travis]  
-**Node Support:** *0.10, 0.12*  
+[![NPM version][shield-npm]][info-npm]
+[![Bower version][shield-bower]][info-bower]
+[![Node.js version support][shield-node]][info-node]
+[![Build status][shield-build]][info-build]
+[![Dependencies][shield-dependencies]][info-dependencies]
+[![MIT licensed][shield-license]][info-license]
+
 **Browser Support:** *Android Browser 2.2–4.2, Firefox 3.6, Firefox 4–22, Google Chrome 14–28, Internet Explorer 6–10, Mobile Safari iOS 3–6, Safari 5–6*
 
 
@@ -359,7 +363,7 @@ Code with lint errors or no/failing tests will not be accepted, please use the b
 License
 -------
 
-Proclaim is licensed under the [MIT][mit] license.
+Proclaim is licensed under the [MIT][info-license] license.
 
 
 
@@ -370,8 +374,18 @@ Proclaim is licensed under the [MIT][mit] license.
 [commonjs-unit]: http://wiki.commonjs.org/wiki/Unit_Testing/1.0#Assert
 [component]: https://github.com/component/component
 [cygwin]: http://www.cygwin.com/
-[mit]: http://opensource.org/licenses/mit-license.php
 [node]: http://nodejs.org/
 [node-assert]: http://nodejs.org/api/assert.html
-[travis]: https://travis-ci.org/rowanmanning/proclaim
-[travis-status]: https://travis-ci.org/rowanmanning/proclaim.png?branch=master
+
+[info-bower]: http://bower.io/search/?q=proclaim
+[info-dependencies]: https://gemnasium.com/rowanmanning/proclaim
+[info-license]: LICENSE
+[info-node]: package.json
+[info-npm]: https://www.npmjs.com/package/proclaim
+[info-build]: https://travis-ci.org/rowanmanning/proclaim
+[shield-bower]: https://img.shields.io/bower/v/proclaim.svg
+[shield-dependencies]: https://img.shields.io/gemnasium/rowanmanning/proclaim.svg
+[shield-license]: https://img.shields.io/badge/license-MIT-blue.svg
+[shield-node]: https://img.shields.io/node/v/proclaim.svg?label=node.js+support
+[shield-npm]: https://img.shields.io/npm/v/proclaim.svg
+[shield-build]: https://img.shields.io/travis/rowanmanning/proclaim/master.svg
