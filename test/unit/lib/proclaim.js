@@ -3,8 +3,15 @@
 (function () {
     'use strict';
 
-    var assert = require('proclaim');
-    var proclaim = require('../../../lib/proclaim');
+    var assert;
+    var proclaim;
+
+    if (typeof window === 'undefined') {
+        assert = proclaim = require('../../../lib/proclaim');
+    }
+    else {
+        assert = proclaim = window.proclaim;
+    }
 
     // Helper function to call a function with specified args
     function callFn (fn) {

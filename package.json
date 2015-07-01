@@ -19,8 +19,7 @@
     "devDependencies": {
         "jscs": "^1",
         "jshint": "^2",
-        "mocha": "^2",
-        "proclaim": "^3"
+        "mocha": "^2"
     },
 
     "main": "./lib/proclaim.js",

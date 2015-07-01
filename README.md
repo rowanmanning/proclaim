@@ -337,33 +337,25 @@ Legacy
 If you're still using a `1.x` or `2.x` version of Proclaim, you're advised to upgrade to `3.x`. The `1.x` and `2.x` branches will be maintained for the forseeable future, but it will not get any new features. You can [view the `1.x` source code here][1.x] or [view the `2.x` source code here][2.x].
 
 
-Development
------------
+Contributing
+------------
 
-To develop Proclaim, you'll need to clone the repo and install dependencies with `make deps`. If you're on Windows, you're probably best off using [Cygwin][cygwin] or similar.
+To contribute to Proclaim, clone this repo locally and commit your code on a separate branch.
 
-Once you're set up, you can run the following commands:
-
-```sh
-$ make deps         # Install dependencies
-$ make lint         # Run JSHint with the correct config
-$ make test         # Run unit tests in Node
-$ make test-server  # Run a server for browser unit testing (visit localhost:3000)
-```
-
-When no build target is specified, make will run `deps lint test`. This means you can use the following command for brevity:
+Please write unit tests for your code, and check that everything works by running the following before opening a pull-request:
 
 ```sh
-$ make
+make ci
 ```
 
-Code with lint errors or no/failing tests will not be accepted, please use the build tools outlined above.
+To test proclaim in-browser, just open up [`test/browser/test.html`](test/browser/test.html) in-browser.
 
 
 License
 -------
 
-Proclaim is licensed under the [MIT][info-license] license.
+Proclaim is licensed under the [MIT][info-license] license.  
+Copyright &copy; 2015, Rowan Manning
 
 
 
@@ -373,7 +365,6 @@ Proclaim is licensed under the [MIT][info-license] license.
 [chai]: http://chaijs.com/
 [commonjs-unit]: http://wiki.commonjs.org/wiki/Unit_Testing/1.0#Assert
 [component]: https://github.com/component/component
-[cygwin]: http://www.cygwin.com/
 [node]: http://nodejs.org/
 [node-assert]: http://nodejs.org/api/assert.html
 
