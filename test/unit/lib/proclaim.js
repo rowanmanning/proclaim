@@ -1,10 +1,10 @@
-/* jshint maxlen: 200 */
-/* global beforeEach, describe, it */
+// jshint maxstatements: false
+// jscs:disable disallowMultipleVarDecl, maximumLineLength
 (function () {
     'use strict';
 
     var assert = require('proclaim');
-    var proclaim = require('../../lib/proclaim');
+    var proclaim = require('../../../lib/proclaim');
 
     // Helper function to call a function with specified args
     function callFn (fn) {
@@ -87,7 +87,8 @@
                     it('should return a string representation of the error when no message is set', function () {
                         if (typeof require === 'function') {
                             assert.strictEqual('' + errWithNoMessage, 'AssertionError: \'bar\' === \'baz\'');
-                        } else {
+                        }
+                        else {
                             assert.strictEqual('' + errWithNoMessage, 'AssertionError: bar === baz');
                         }
                     });
@@ -112,8 +113,12 @@
 
                 it('should have the expected properties', function () {
                     var error;
-                    try { proclaim.fail('foo', 'bar', 'baz', 'qux'); }
-                    catch (err) { error = err; }
+                    try {
+                        proclaim.fail('foo', 'bar', 'baz', 'qux');
+                    }
+                    catch (err) {
+                        error = err;
+                    }
                     assert.strictEqual(error.actual, 'foo');
                     assert.strictEqual(error.expected, 'bar');
                     assert.strictEqual(error.message, 'baz');
@@ -581,7 +586,9 @@
             });
 
             it('should not throw when called with a function', function () {
-                assert.doesNotThrow(function () { proclaim.isFunction(function () {}); });
+                assert.doesNotThrow(function () {
+                    proclaim.isFunction(function () {});
+                });
             });
 
             it('should throw when called with a non-function', function () {
@@ -913,7 +920,7 @@
             });
         });
 
-        describe('lengthEquals()', function() {
+        describe('lengthEquals()', function () {
 
             it('should be a function', function () {
                 assert.isFunction(proclaim.lengthEquals);
@@ -1030,4 +1037,4 @@
 
     });
 
-} ());
+}());

@@ -17,6 +17,7 @@
         "node": ">=0.10"
     },
     "devDependencies": {
+        "jscs": "^1",
         "jshint": "^2",
         "mocha": "^2",
         "proclaim": "^3"
@@ -24,6 +25,6 @@
 
     "main": "./lib/proclaim.js",
     "scripts": {
-        "test": "make test"
+        "test": "make ci"
     }
 }
