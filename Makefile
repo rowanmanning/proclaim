@@ -32,9 +32,4 @@ test-unit:
 		--recursive \
 		./test/unit
 
-# Run the Node Test app for browser testing
-test-server:
-	@echo "Running test server..."
-	@./node_modules/.bin/mocha-srv ./test/unit
-
 .PHONY: test
