@@ -11,7 +11,7 @@ A simple assertion library for server and client side JavaScript. Proclaim can b
 [![Dependencies][shield-dependencies]][info-dependencies]
 [![MIT licensed][shield-license]][info-license]
 
-**Browser Support:** *Android Browser 2.2–4.2, Firefox 3.6, Firefox 4–22, Google Chrome 14–28, Internet Explorer 6–10, Mobile Safari iOS 3–6, Safari 5–6*
+**Browser Support:** *Android Browser 2.2–5, Edge 11, Firefox 3.6, Firefox 4–38, Google Chrome 14–43, Internet Explorer 6–11, Safari iOS 3–8.3, Safari 5–8*
 
 
 Why?
