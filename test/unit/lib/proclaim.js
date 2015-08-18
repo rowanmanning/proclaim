@@ -1,5 +1,5 @@
 // jshint maxstatements: false
-// jscs:disable disallowMultipleVarDecl, maximumLineLength
+// jscs:disable disallowMultipleVarDecl, maximumLineLength, requireObjectKeysOnNewLine
 (function () {
     'use strict';
 

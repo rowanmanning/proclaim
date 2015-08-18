@@ -17,7 +17,8 @@
         "node": ">=0.10"
     },
     "devDependencies": {
-        "jscs": "^1",
+        "istanbul": "~0.3",
+        "jscs": "^2",
         "jshint": "^2",
         "mocha": "^2"
     },
