@@ -369,13 +369,13 @@ Copyright &copy; 2015, Rowan Manning
 [node-assert]: http://nodejs.org/api/assert.html
 
 [info-bower]: http://bower.io/search/?q=proclaim
-[info-coverage]: https://coveralls.io/github/rowanmanning/commandeer
+[info-coverage]: https://coveralls.io/github/rowanmanning/proclaim
 [info-license]: LICENSE
 [info-node]: package.json
 [info-npm]: https://www.npmjs.com/package/proclaim
 [info-build]: https://travis-ci.org/rowanmanning/proclaim
 [shield-bower]: https://img.shields.io/bower/v/proclaim.svg
-[shield-coverage]: https://img.shields.io/coveralls/rowanmanning/commandeer.svg
+[shield-coverage]: https://img.shields.io/coveralls/rowanmanning/proclaim.svg
 [shield-license]: https://img.shields.io/badge/license-MIT-blue.svg
 [shield-node]: https://img.shields.io/badge/node.js%20support-0.10–4.0-brightgreen.svg
 [shield-npm]: https://img.shields.io/npm/v/proclaim.svg
