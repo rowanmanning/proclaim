@@ -8,7 +8,7 @@ A simple assertion library for server and client side JavaScript. Proclaim can b
 [![Bower version][shield-bower]][info-bower]
 [![Node.js version support][shield-node]][info-node]
 [![Build status][shield-build]][info-build]
-[![Dependencies][shield-dependencies]][info-dependencies]
+[![Code coverage][shield-coverage]][info-coverage]
 [![MIT licensed][shield-license]][info-license]
 
 **Browser Support:** *Android Browser 2.2–5, Edge 11, Firefox 3.6, Firefox 4–38, Google Chrome 14–43, Internet Explorer 6–11, Safari iOS 3–8.3, Safari 5–8*
@@ -369,13 +369,13 @@ Copyright &copy; 2015, Rowan Manning
 [node-assert]: http://nodejs.org/api/assert.html
 
 [info-bower]: http://bower.io/search/?q=proclaim
-[info-dependencies]: https://gemnasium.com/rowanmanning/proclaim
+[info-coverage]: https://coveralls.io/github/rowanmanning/commandeer
 [info-license]: LICENSE
 [info-node]: package.json
 [info-npm]: https://www.npmjs.com/package/proclaim
 [info-build]: https://travis-ci.org/rowanmanning/proclaim
 [shield-bower]: https://img.shields.io/bower/v/proclaim.svg
-[shield-dependencies]: https://img.shields.io/gemnasium/rowanmanning/proclaim.svg
+[shield-coverage]: https://img.shields.io/coveralls/rowanmanning/commandeer.svg
 [shield-license]: https://img.shields.io/badge/license-MIT-blue.svg
 [shield-node]: https://img.shields.io/badge/node.js%20support-0.10–4.0-brightgreen.svg
 [shield-npm]: https://img.shields.io/npm/v/proclaim.svg

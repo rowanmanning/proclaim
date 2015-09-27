@@ -2,14 +2,15 @@
 # Language/versions
 language: node_js
 node_js:
-  - "4.0"
+  - "4"
   - "0.12"
   - "0.10"
 
-# Build script
-script: make ci
+# Before install
+before_install:
+  - npm install coveralls
 
-# Notifications
-notifications:
- email:
-   - notify+proclaim@rowanmanning.co.uk
+# Build script
+script:
+  - make ci
+  - cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
