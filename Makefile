@@ -26,7 +26,7 @@ jscs:
 	@./node_modules/.bin/jscs .
 
 # Run all tests
-test: test-unit
+test: test-coverage
 
 # Run unit tests
 test-unit:
