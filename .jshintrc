@@ -8,12 +8,11 @@
         "describe": true,
         "it": true
     },
-    "globalstrict": true,
-    "latedef": "nofunc",
     "maxparams": 5,
     "maxdepth": 2,
     "maxstatements": false,
     "maxcomplexity": 12,
     "node": true,
+    "strict": true,
     "unused": true
 }
