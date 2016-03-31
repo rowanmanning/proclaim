@@ -20,7 +20,12 @@ branches:
     - master
     - /^\d+\.\d+\.\d+$/
 
+# Before install
+before_install:
+  - npm install coveralls
+
 # Build script
 script:
   - 'if [ $LINT ]; then make verify; fi'
   - 'if [ ! $LINT ]; then make test; fi'
+  - 'if [ ! $LINT ]; then cat ./coverage/lcov.info | ./node_modules/.bin/coveralls; fi'
