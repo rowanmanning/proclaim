@@ -16,6 +16,9 @@
     "engines": {
         "node": ">=0.10"
     },
+    "dependencies": {
+      "util-inspect": "^0.1.8"
+    },
     "devDependencies": {
         "istanbul": "~0.3",
         "jscs": "^2",
