@@ -121,7 +121,7 @@ Assert that `actual` is not deeply equal to `expected`.
 
 Assert that `fn` throws an error. If `expected` is present then the thrown `error` will be tested as follows:
 
-- If `expected` is a function, assert that `error intanceof expected`
+- If `expected` is a function, assert that `error instanceof expected`
 - If `expected` is a string, assert that `error.message === expected`
 - If `expected` is a RegExp, assert that `expected.test(error) === true`
 
