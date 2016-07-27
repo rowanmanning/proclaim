@@ -1,30 +1,32 @@
 {
-    "name": "proclaim",
-    "version": "3.4.1",
-
-    "description": "A simple assertion library for server and client side JavaScript",
-    "keywords": [ "assert", "test" ],
-    "author": "Rowan Manning (http://rowanmanning.co.uk/)",
-
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/rowanmanning/proclaim.git"
-    },
-    "homepage": "https://github.com/rowanmanning/proclaim",
-    "bugs": "https://github.com/rowanmanning/proclaim/issues",
-
-    "engines": {
-        "node": ">=0.10"
-    },
-    "devDependencies": {
-        "istanbul": "~0.3",
-        "jscs": "^2",
-        "jshint": "^2",
-        "mocha": "^2"
-    },
-
-    "main": "./lib/proclaim.js",
-    "scripts": {
-        "test": "make ci"
-    }
+  "name": "proclaim",
+  "version": "3.4.1",
+  "description": "A simple assertion library for server and client side JavaScript",
+  "keywords": [
+    "assert",
+    "test"
+  ],
+  "author": "Rowan Manning (http://rowanmanning.co.uk/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rowanmanning/proclaim.git"
+  },
+  "homepage": "https://github.com/rowanmanning/proclaim",
+  "bugs": "https://github.com/rowanmanning/proclaim/issues",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "dependencies": {
+    "util-inspect": "^0.1.8"
+  },
+  "devDependencies": {
+    "istanbul": "~0.3",
+    "jscs": "^2",
+    "jshint": "^2",
+    "mocha": "^2"
+  },
+  "main": "./lib/proclaim.js",
+  "scripts": {
+    "test": "make ci"
+  }
 }
