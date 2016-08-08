@@ -6,7 +6,9 @@ matrix:
 
     # Run linter once
     - node_js: '6'
-      env: LINT=true
+      env:
+        - LINT=true
+        - SAUCE=true
 
     # Run tests
     - node_js: '0.10'
@@ -30,3 +32,4 @@ script:
   - 'if [ $LINT ]; then make verify; fi'
   - 'if [ ! $LINT ]; then make test; fi'
   - 'if [ ! $LINT ]; then cat ./coverage/lcov.info | ./node_modules/.bin/coveralls || true; fi'
+  - 'if [ ! $LINT ]; then ./node_modules/.bin/zuul; fi'

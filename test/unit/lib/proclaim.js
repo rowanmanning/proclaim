@@ -92,7 +92,7 @@
                     });
 
                     it('should return a string representation of the error when no message is set', function () {
-                        if (typeof require === 'function') {
+                        if (typeof require === 'function' && !zuul_msg_bus) {
                             assert.strictEqual('' + errWithNoMessage, 'AssertionError: \'bar\' === \'baz\'');
                         }
                         else {
