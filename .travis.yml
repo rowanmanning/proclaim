@@ -17,6 +17,12 @@ matrix:
     - node_js: '5'
     - node_js: '6'
 
+# Environment variables
+env:
+  global:
+    - secure: "bhTXDl8FF0JpAWsYaw88DnDAnJWin7r79eY+7Y7G/0VCp5Ai5woesqNG/Sedg06doH93S7u9e0m30l0kkW1ev/Yz5BBIfFvjoXuGEqOy0lDPcFjkYTDau2MJWWPBwoOmDEGld+PnG+Q2pyBYe10XBKw54DTYWIvLrSL5fGJGiw4="
+    - secure: "nrHE4d/ijzm5iNJvVOZWXzqnuUuCdOCLoBEKraFAC6vtUHRjwsnP9dpVRznF51OYOz5gixmgD1TeiAMGDg3SO9rpLliOmcaDpc30SbfiZi9o2CPclyt/FZdQyNrWH0tnRWI0rwUrCKLvo0BItBi3qYLLd+YIO+172BvuUJyLy4w="
+
 # Restrict builds on branches
 branches:
   only:
