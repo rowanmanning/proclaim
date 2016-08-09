@@ -1,8 +1,9 @@
 // jshint maxstatements: false
-// jscs:disable disallowMultipleVarDecl, maximumLineLength, requireObjectKeysOnNewLine
+// jscs:disable disallowMultipleVarDecl, maximumLineLength, requireCamelCaseOrUpperCaseIdentifiers, requireObjectKeysOnNewLine
 (function () {
     'use strict';
 
+    var zuul_msg_bus = null;
     var assert;
     var proclaim;
 
@@ -10,6 +11,7 @@
         assert = proclaim = require('../../../lib/proclaim');
     }
     else {
+        zuul_msg_bus = window.zuul_msg_bus;
         assert = proclaim = window.proclaim;
     }
 
