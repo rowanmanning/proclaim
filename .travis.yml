@@ -21,6 +21,11 @@ matrix:
     - node_js: '5'
     - node_js: '6'
 
+  # Allow Sauce Labs tests to fail
+  allow_failures:
+    - env:
+        - SAUCE=true
+
 # Environment variables
 env:
   global:
