@@ -21,7 +21,7 @@
         "jscs": "^2",
         "jshint": "^2",
         "mocha": "^2",
-        "zuul": "git://github.com/lpinca/zuul.git#disregard/appium-version"
+        "zuul": "^3"
     },
 
     "main": "./lib/proclaim.js",
