@@ -230,6 +230,7 @@
                 assert.doesNotThrow(callFn(proclaim.deepEqual, date, date));
                 assert.doesNotThrow(callFn(proclaim.deepEqual, {foo: 'bar', bar: ['baz']}, {foo: 'bar', bar: ['baz']}));
                 assert.doesNotThrow(callFn(proclaim.deepEqual, arguments, arguments));
+                assert.doesNotThrow(callFn(proclaim.deepEqual, [1, undefined, 3], [1, undefined, 3]));
                 // Todo: write some more thorough tests for this
             });
 
@@ -237,6 +238,7 @@
                 assert.throws(callFn(proclaim.deepEqual, true, false), proclaim.AssertionError, 'test1');
                 assert.throws(callFn(proclaim.deepEqual, new Date(), new Date(1000)), proclaim.AssertionError, 'test2');
                 assert.throws(callFn(proclaim.deepEqual, {foo: 'bar', bar: ['baz']}, {bar: 'baz', baz: ['qux']}), proclaim.AssertionError, 'test3');
+                assert.throws(callFn(proclaim.deepEqual, [1, undefined, 3], [undefined,1,3]), proclaim.AssertionError, 'test4');
                 assert.throws(callFn(proclaim.deepEqual, false, {}), proclaim.AssertionError, 'test4');
             });
 
