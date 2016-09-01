@@ -1,8 +1,9 @@
 // jshint maxstatements: false
-// jscs:disable disallowMultipleVarDecl, maximumLineLength, requireObjectKeysOnNewLine
+// jscs:disable disallowMultipleVarDecl, maximumLineLength, requireCamelCaseOrUpperCaseIdentifiers, requireObjectKeysOnNewLine
 (function () {
     'use strict';
 
+    var zuul_msg_bus = null;
     var assert;
     var proclaim;
 
@@ -10,6 +11,7 @@
         assert = proclaim = require('../../../lib/proclaim');
     }
     else {
+        zuul_msg_bus = window.zuul_msg_bus;
         assert = proclaim = window.proclaim;
     }
 
@@ -92,7 +94,7 @@
                     });
 
                     it('should return a string representation of the error when no message is set', function () {
-                        if (typeof require === 'function') {
+                        if (typeof require === 'function' && !zuul_msg_bus) {
                             assert.strictEqual('' + errWithNoMessage, 'AssertionError: \'bar\' === \'baz\'');
                         }
                         else {
@@ -237,6 +239,7 @@
                 assert.throws(callFn(proclaim.deepEqual, new Date(), new Date(1000)), proclaim.AssertionError, 'test2');
                 assert.throws(callFn(proclaim.deepEqual, {foo: 'bar', bar: ['baz']}, {bar: 'baz', baz: ['qux']}), proclaim.AssertionError, 'test3');
                 assert.throws(callFn(proclaim.deepEqual, [1, undefined, 3], [undefined,1,3]), proclaim.AssertionError, 'test4');
+                assert.throws(callFn(proclaim.deepEqual, false, {}), proclaim.AssertionError, 'test4');
             });
 
             it('should not throw when keys are in a different order', function () {
