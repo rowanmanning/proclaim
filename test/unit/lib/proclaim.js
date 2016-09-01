@@ -235,6 +235,7 @@
                 assert.throws(callFn(proclaim.deepEqual, true, false), proclaim.AssertionError, 'test1');
                 assert.throws(callFn(proclaim.deepEqual, new Date(), new Date(1000)), proclaim.AssertionError, 'test2');
                 assert.throws(callFn(proclaim.deepEqual, {foo: 'bar', bar: ['baz']}, {bar: 'baz', baz: ['qux']}), proclaim.AssertionError, 'test3');
+                assert.throws(callFn(proclaim.deepEqual, false, {}), proclaim.AssertionError, 'test4');
             });
 
             it('should not throw when keys are in a different order', function () {
