@@ -11,8 +11,15 @@ A simple assertion library for server and client side JavaScript. Proclaim can b
 [![Code coverage][shield-coverage]][info-coverage]
 [![MIT licensed][shield-license]][info-license]
 
-[![Sauce test status and Browser support][matrix-image]][matrix-link]
 
+Browser Support
+---------------
+
+**Browsers Proclaim currently supports:** *Android Browser 2.2–5, Edge 11, Firefox 3.6, Firefox 4–38, Google Chrome 14–43, Internet Explorer 6–11, Safari iOS 3–8.3, Safari 5–8*.
+
+We use Sauce Labs to automatically test against these browsers, however we're having issues with tunneling. This matrix may not always be complete:
+
+[![Sauce test status and Browser support][matrix-image]][matrix-link]
 
 
 Why?
