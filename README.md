@@ -11,7 +11,8 @@ A simple assertion library for server and client side JavaScript. Proclaim can b
 [![Code coverage][shield-coverage]][info-coverage]
 [![MIT licensed][shield-license]][info-license]
 
-**Browser Support:** *Android Browser 2.2–5, Edge 11, Firefox 3.6, Firefox 4–38, Google Chrome 14–43, Internet Explorer 6–11, Safari iOS 3–8.3, Safari 5–8*
+[![Sauce test status and Browser support][matrix-image]][matrix-link]
+
 
 
 Why?
@@ -367,6 +368,8 @@ Copyright &copy; 2015, Rowan Manning
 [component]: https://github.com/component/component
 [node]: http://nodejs.org/
 [node-assert]: http://nodejs.org/api/assert.html
+[matrix-image]: https://saucelabs.com/browser-matrix/proclaim.svg
+[matrix-link]: https://saucelabs.com/u/proclaim
 
 [info-bower]: http://bower.io/search/?q=proclaim
 [info-coverage]: https://coveralls.io/github/rowanmanning/proclaim

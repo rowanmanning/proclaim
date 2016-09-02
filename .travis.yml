@@ -21,11 +21,16 @@ matrix:
     - node_js: '5'
     - node_js: '6'
 
+  # Allow Sauce Labs tests to fail
+  allow_failures:
+    - env:
+        - SAUCE=true
+
 # Environment variables
 env:
   global:
-    - secure: "bhTXDl8FF0JpAWsYaw88DnDAnJWin7r79eY+7Y7G/0VCp5Ai5woesqNG/Sedg06doH93S7u9e0m30l0kkW1ev/Yz5BBIfFvjoXuGEqOy0lDPcFjkYTDau2MJWWPBwoOmDEGld+PnG+Q2pyBYe10XBKw54DTYWIvLrSL5fGJGiw4="
-    - secure: "nrHE4d/ijzm5iNJvVOZWXzqnuUuCdOCLoBEKraFAC6vtUHRjwsnP9dpVRznF51OYOz5gixmgD1TeiAMGDg3SO9rpLliOmcaDpc30SbfiZi9o2CPclyt/FZdQyNrWH0tnRWI0rwUrCKLvo0BItBi3qYLLd+YIO+172BvuUJyLy4w="
+    - secure: "tmKphgbrLOSn8QzyynW4QXG+wL4i0rtjdGJ9V1g97msQplvTWd8VRynhcinyjMBuDA+SsCLrMPYniSXFwoCFOFBd/MT4G9U3N1VBMPOuBdWq3EhXPsN6h1IGHIGgjU8G6Ntw1CDC6gTvp0qivHvMgn/uPN/O3+1lYkL8F+WtUnw="
+    - secure: "yS1Itt0q435UIl6n23hURQsx8YOy1cP1V1N60KAUEccCiALN/uRccKbeKCFEMBud0VVx9DdaF5q0PVRxxwJdoedpmG4S+59WH/IKo3Co3zdLuamZcH6cV2rur1PAQjMBK+y/RifE6Z++63PpjtdozsVIBbFcjPKKWsWQzRXzIk8="
 
 # Restrict builds on branches
 branches:
