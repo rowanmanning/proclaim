@@ -11,27 +11,26 @@ A simple assertion library for server and client side JavaScript. Proclaim can b
 [![Code coverage][shield-coverage]][info-coverage]
 [![MIT licensed][shield-license]][info-license]
 
+```js
+const proclaim = require('proclaim');
+proclaim.equal(true, false); // throws
+```
 
-Browser Support
----------------
+Table Of Contents
+-----------------
 
-**Browsers Proclaim currently supports:** *Android Browser 2.2–5, Edge 11, Firefox 3.6, Firefox 4–38, Google Chrome 14–43, Internet Explorer 6–11, Safari iOS 3–8.3, Safari 5–8*.
-
-We use Sauce Labs to automatically test against these browsers, however we're having issues with tunneling. This matrix may not always be complete:
-
-[![Sauce test status and Browser support][matrix-image]][matrix-link]
-
-
-Why?
-----
-
-I've been frustrated by assertion libraries not working in all the browsers I test my code in (notably IE 6–8). Proclaim is an attempt to achieve the simplicity of [Node.js assert][node-assert] with the extra assertions of [Chai][chai].
-
-Proclaim implements all of the assertions in [CommonJS Unit Testing 1.0][commonjs-unit] which means it works as a drop-in replacement for the Node.js assert module. It also implements most of Chai's assertions ([see here for differences](#differences-between-proclaim-and-chai)) so you should be able to switch quite easily.
+- [Install](#install)
+- [Usage](#usage)
+- [Assertions](#assertions)
+- [Why?](#why)
+- [Differences Between Proclaim And Chai](#differences-between-proclaim-and-chai)
+- [Contributing](#contributing)
+- [Support and Migration](#support-and-migration)
+- [License](#license)
 
 
-Getting Started
----------------
+Install
+-------
 
 You can use Proclaim on the server side with [Node.js][node] and npm:
 
@@ -312,6 +311,14 @@ Assert that `actual > expected`.
 Assert that `actual >= expected`.
 
 
+Why?
+----
+
+I've been frustrated by assertion libraries not working in all the browsers I test my code in (notably IE 6–8). Proclaim is an attempt to achieve the simplicity of [Node.js assert][node-assert] with the extra assertions of [Chai][chai].
+
+Proclaim implements all of the assertions in [CommonJS Unit Testing 1.0][commonjs-unit] which means it works as a drop-in replacement for the Node.js assert module. It also implements most of Chai's assertions ([see here for differences](#differences-between-proclaim-and-chai)) so you should be able to switch quite easily.
+
+
 Differences Between Proclaim And Chai
 -------------------------------------
 
@@ -339,12 +346,6 @@ Proclaim implements most of Chai's assertions, but is missing a few. The followi
 - `doesNotDecrease` - Unlikely to implement
 
 
-Legacy
-------
-
-If you're still using a `1.x` or `2.x` version of Proclaim, you're advised to upgrade to `3.x`. The `1.x` and `2.x` branches will be maintained for the forseeable future, but it will not get any new features. You can [view the `1.x` source code here][1.x] or [view the `2.x` source code here][2.x].
-
-
 Contributing
 ------------
 
@@ -356,7 +357,25 @@ Please write unit tests for your code, and check that everything works by runnin
 make ci
 ```
 
-To test proclaim in-browser, just open up [`test/browser/test.html`](test/browser/test.html) in-browser.
+To test proclaim in-browser, just open up [`test/browser/test.html`](test/browser/test.html).
+
+
+Support and Migration
+---------------------
+
+**Browsers Proclaim currently supports:** *Android Browser 2.2–5, Edge 11, Firefox 3.6, Firefox 4–38, Google Chrome 14–43, Internet Explorer 6–11, Safari iOS 3–8.3, Safari 5–8*. We use Sauce Labs to automatically test against these browsers, however we're having issues with tunneling. You can [view a browser support matrix here][matrix-link].
+
+Proclaim major versions are normally supported for 6 months after their last minor release. This means that patch-level changes will be added and bugs will be fixed. The table below outlines the end-of-support dates for major versions, and the last minor release for that version.
+
+<!-- We also maintain a [migration guide](MIGRATION.md) to help you migrate. -->
+
+| :grey_question: | Major Version | Last Minor Release | Node.js Versions | Support End Date |
+| :-------------- | :------------ | :----------------- | :--------------- | :--------------- |
+| :heart:         | 3             | N/A                | 0.10+            | N/A              |
+| :skull:         | 2             | 2.0                | 0.6–0.10         | 2014-02-02       |
+| :skull:         | 1             | 1.5                | 0.6–0.10         | 2014-01-05       |
+
+If you're opening issues related to these, please mention the version that the issue relates to.
 
 
 License
@@ -375,7 +394,6 @@ Copyright &copy; 2015, Rowan Manning
 [component]: https://github.com/component/component
 [node]: http://nodejs.org/
 [node-assert]: http://nodejs.org/api/assert.html
-[matrix-image]: https://saucelabs.com/browser-matrix/proclaim.svg
 [matrix-link]: https://saucelabs.com/u/proclaim
 
 [info-bower]: http://bower.io/search/?q=proclaim
