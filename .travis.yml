@@ -5,12 +5,12 @@ matrix:
   include:
 
     # Run linter once
-    - node_js: '6'
+    - node_js: '7'
       env:
         - LINT=true
 
     # Run browser tests
-    - node_js: '6'
+    - node_js: '7'
       env:
         - SAUCE=true
 
@@ -20,6 +20,7 @@ matrix:
     - node_js: '4'
     - node_js: '5'
     - node_js: '6'
+    - node_js: '7'
 
   # Allow Sauce Labs tests to fail
   allow_failures:
