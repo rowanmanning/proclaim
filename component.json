@@ -11,8 +11,8 @@
     "homepage": "https://github.com/rowanmanning/proclaim",
     "bugs": "https://github.com/rowanmanning/proclaim/issues",
 
-    "main": "./lib/proclaim.js",
+    "main": "lib/proclaim.js",
     "scripts": [
-        "./lib/proclaim.js"
+        "lib/proclaim.js"
     ]
 }
