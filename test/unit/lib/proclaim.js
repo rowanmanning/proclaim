@@ -880,6 +880,31 @@
                 });
 
             });
+
+            describe('given an enhanced object (such as Window)', function () {
+                var MockWindow;
+                var mockWindow;
+
+                beforeEach(function () {
+                    // jscs:disable requireFunctionDeclarations
+                    MockWindow = function () {
+                        this.document = {};
+                    };
+                    MockWindow.prototype.toString = function () {
+                        return '[object Window]';
+                    };
+                    mockWindow = new MockWindow();
+                });
+
+                it('should throw if the "needle" property is not found', function () {
+                    assert.throws(callFn(proclaim.include, mockWindow, 'notaproperty'), proclaim.AssertionError);
+                });
+
+                it('should not throw if the "needle" property is found', function () {
+                    assert.doesNotThrow(callFn(proclaim.include, mockWindow, 'document'));
+                });
+
+            });
         });
 
         describe('doesNotInclude()', function () {
