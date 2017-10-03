@@ -3,3 +3,4 @@ components
 coverage
 node_modules
 npm-debug.log
+.vscode
