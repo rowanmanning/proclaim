@@ -24,8 +24,15 @@
     }
 
     // Helper functions for testing throws/doesNotThrow
+    function CustomError (message) {
+        this.name = 'CustomError';
+        this.message = message;
+        this.stack = (new Error()).stack;
+    }
+    CustomError.prototype = new Error();
+
     function throwingFunction () {
-        throw new Error('foo');
+        throw new CustomError('foo');
     }
     function nonThrowingFunction () {
         return 'foo';
@@ -344,10 +351,10 @@
                 assert.doesNotThrow(callFn(proclaim.throws, throwingFunction, 'foo'));
             });
 
-            it('should throw when thrown error does not match the expected error', function () {
-                assert.throws(callFn(proclaim.throws, throwingFunction, proclaim.AssertionError), proclaim.AssertionError);
-                assert.throws(callFn(proclaim.throws, throwingFunction, /bar/), proclaim.AssertionError);
-                assert.throws(callFn(proclaim.throws, throwingFunction, 'bar'), proclaim.AssertionError);
+            it('should throw the original when thrown error does not match the expected error', function () {
+                assert.throws(callFn(proclaim.throws, throwingFunction, proclaim.AssertionError), CustomError);
+                assert.throws(callFn(proclaim.throws, throwingFunction, /bar/), CustomError);
+                assert.throws(callFn(proclaim.throws, throwingFunction, 'bar'), CustomError);
             });
 
         });
@@ -366,10 +373,10 @@
                 assert.throws(callFn(proclaim.doesNotThrow, throwingFunction), proclaim.AssertionError);
             });
 
-            it('should not throw when thrown error does not match the expected error', function () {
-                assert.doesNotThrow(callFn(proclaim.doesNotThrow, throwingFunction, proclaim.AssertionError));
-                assert.doesNotThrow(callFn(proclaim.doesNotThrow, throwingFunction, /bar/));
-                assert.doesNotThrow(callFn(proclaim.doesNotThrow, throwingFunction, 'bar'));
+            it('should throw original error when thrown error does not match the expected error', function () {
+                assert.throws(callFn(proclaim.doesNotThrow, throwingFunction, proclaim.AssertionError), CustomError);
+                assert.throws(callFn(proclaim.doesNotThrow, throwingFunction, /bar/), CustomError);
+                assert.throws(callFn(proclaim.doesNotThrow, throwingFunction, 'bar'), CustomError);
             });
 
             it('should throw when thrown error matches the expected error', function () {
