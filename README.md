@@ -123,6 +123,14 @@ Assert that `actual` is deeply equal to `expected`.
 
 Assert that `actual` is not deeply equal to `expected`.
 
+### proclaim.deepStrictEqual( actual, expected, [message] )
+
+Assert that `actual` is deeply equal to `expected`, as determined by the strict equality operator `===`.
+
+### proclaim.notStrictEqual( actual, expected, [message] )
+
+Assert that `actual` is not deeply equal to `expected`, as determined by the strict not equal operator `!==`.
+
 
 ### proclaim.throws( fn, [expected], [message] )
 
