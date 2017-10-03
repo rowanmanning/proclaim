@@ -50,6 +50,7 @@
 
 	"excludeFiles": [
 		"coverage/**",
-		"node_modules/**"
+		"node_modules/**",
+		"test/unit/commonjs-assert/program.js"
 	]
 }
