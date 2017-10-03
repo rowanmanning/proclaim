@@ -131,6 +131,7 @@ Assert that `fn` throws an error. If `expected` is present then the thrown `erro
 - If `expected` is a function, assert that `error instanceof expected`
 - If `expected` is a string, assert that `error.message === expected`
 - If `expected` is a RegExp, assert that `expected.test(error) === true`
+- If `expected` is a function which error is not an instance of, assert that `expected.call({}, error) === true`
 
 
 ### proclaim.doesNotThrow( fn, [expected], [message] )
@@ -381,7 +382,7 @@ If you're opening issues related to these, please mention the version that the i
 License
 -------
 
-Proclaim is licensed under the [MIT][info-license] license.  
+Proclaim is licensed under the [MIT][info-license] license.
 Copyright &copy; 2015, Rowan Manning
 
 
