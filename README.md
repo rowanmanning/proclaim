@@ -391,6 +391,7 @@ License
 -------
 
 Proclaim is licensed under the [MIT][info-license] license.
+
 Copyright &copy; 2015, Rowan Manning
 
 
