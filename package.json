@@ -20,9 +20,9 @@
     "util-inspect": "^0.1.8"
   },
   "devDependencies": {
+    "@rowanmanning/eslint-config": "^1.0.0",
+    "eslint": "^4.8.0",
     "istanbul": "~0.3",
-    "jscs": "^2",
-    "jshint": "^2",
     "mocha": "^2",
     "zuul": "^3"
   },
