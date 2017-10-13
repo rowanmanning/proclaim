@@ -6,7 +6,6 @@ module.exports = {
 		define: true
 	},
 	rules: {
-		'id-length': 'off',
 		'no-void': 'off'
 	}
 };
