@@ -1,16 +1,17 @@
-// jshint maxstatements: false
-// jscs:disable disallowMultipleVarDecl, maximumLineLength, requireCamelCaseOrUpperCaseIdentifiers, requireObjectKeysOnNewLine
+/* eslint strict: ['error', 'function'] */
 (function() {
 	'use strict';
 
-	var zuul_msg_bus = null;
+	var zuulMessageBus = null;
 	var assert;
 	var proclaim;
 
 	if (typeof window === 'undefined') {
 		assert = proclaim = require('../../../lib/proclaim');
 	} else {
-		zuul_msg_bus = window.zuul_msg_bus;
+		/* eslint-disable camelcase */
+		zuulMessageBus = window.zuul_msg_bus;
+		/* eslint-enable camelcase */
 		assert = proclaim = window.proclaim;
 	}
 
@@ -18,7 +19,9 @@
 	function callFn(fn) {
 		var args = Array.prototype.slice.call(arguments, 1);
 		return function() {
+			/* eslint-disable no-invalid-this */
 			return fn.apply(this, args);
+			/* eslint-enable no-invalid-this */
 		};
 	}
 
@@ -63,7 +66,10 @@
 			});
 
 			describe('instance', function() {
-				var optsWithMessage, errWithMessage, optsWithNoMessage, errWithNoMessage;
+				var errWithMessage;
+				var errWithNoMessage;
+				var optsWithMessage;
+				var optsWithNoMessage;
 
 				beforeEach(function() {
 					optsWithMessage = {
@@ -100,7 +106,7 @@
 					});
 
 					it('should return a string representation of the error when no message is set', function() {
-						if (typeof require === 'function' && !zuul_msg_bus) {
+						if (typeof require === 'function' && !zuulMessageBus) {
 							assert.strictEqual(String(errWithNoMessage), 'AssertionError: \'bar\' === \'baz\'');
 						} else {
 							assert.strictEqual(String(errWithNoMessage), 'AssertionError: bar === baz');
@@ -126,16 +132,16 @@
 			describe('error', function() {
 
 				it('should have the expected properties', function() {
-					var error;
+					var caughtError;
 					try {
 						proclaim.fail('foo', 'bar', 'baz', 'qux');
-					} catch (err) {
-						error = err;
+					} catch (error) {
+						caughtError = error;
 					}
-					assert.strictEqual(error.actual, 'foo');
-					assert.strictEqual(error.expected, 'bar');
-					assert.strictEqual(error.message, 'baz');
-					assert.strictEqual(error.operator, 'qux');
+					assert.strictEqual(caughtError.actual, 'foo');
+					assert.strictEqual(caughtError.expected, 'bar');
+					assert.strictEqual(caughtError.message, 'baz');
+					assert.strictEqual(caughtError.operator, 'qux');
 				});
 
 			});
@@ -257,18 +263,18 @@
 			});
 
 			it('should handle RegExps', function() {
-				var a = new RegExp('goodbye', 'g'),
-					b = /goodbye/gi,
-					c = new RegExp('hello', 'g'),
-					d = /hello/i,
-					e = new RegExp('hello', 'i');
+				var regexA = new RegExp('goodbye', 'g');
+				var regexB = /goodbye/gi;
+				var regexC = new RegExp('hello', 'g');
+				var regexD = /hello/i;
+				var regexE = new RegExp('hello', 'i');
 
-				assert.doesNotThrow(callFn(proclaim.deepEqual, a, a));
-				assert.doesNotThrow(callFn(proclaim.deepEqual, d, e));
-				assert.throws(callFn(proclaim.deepEqual, a, b));
-				assert.throws(callFn(proclaim.deepEqual, a, c));
-				assert.throws(callFn(proclaim.deepEqual, a, d));
-				assert.throws(callFn(proclaim.deepEqual, a, e));
+				assert.doesNotThrow(callFn(proclaim.deepEqual, regexA, regexA));
+				assert.doesNotThrow(callFn(proclaim.deepEqual, regexD, regexE));
+				assert.throws(callFn(proclaim.deepEqual, regexA, regexB));
+				assert.throws(callFn(proclaim.deepEqual, regexA, regexC));
+				assert.throws(callFn(proclaim.deepEqual, regexA, regexD));
+				assert.throws(callFn(proclaim.deepEqual, regexA, regexE));
 			});
 		});
 
@@ -901,7 +907,6 @@
 				var mockWindow;
 
 				beforeEach(function() {
-					// jscs:disable requireFunctionDeclarations
 					MockWindow = function() {
 						this.document = {};
 					};
