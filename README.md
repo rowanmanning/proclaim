@@ -284,7 +284,7 @@ Assert that `haystack` contains `needle`. For strings and arrays, this asserts t
 
 ### proclaim.doesNotInclude( haystack, needle, [message] )
 
-Assert that `haystack` does not contain `needle`. See [proclaim.includes](#proclaimincludes-haystack-needle-message-).
+Assert that `haystack` does not contain `needle`. See [proclaim.include](#proclaiminclude-haystack-needle-message-).
 
 *Aliases: `proclaim.notInclude`*
 
