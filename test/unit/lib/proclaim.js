@@ -904,7 +904,8 @@
 					assert.doesNotThrow(callFn(proclaim.include, {
 						hasOwnProperty: function() {
 							throw new Error();
-						}
+						},
+						world: false
 					}, 'world'));
 				});
 
