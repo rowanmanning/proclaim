@@ -899,6 +899,14 @@
 					assert.doesNotThrow(callFn(proclaim.include, {hello: true,
 						world: false}, 'world'));
 				});
+				
+				it('should not use the objects hasOwnProperty method', function () {
+					assert.doesNotThrow(callFn(proclaim.include, {
+						hasOwnProperty: function () {
+							throw new Error();
+						}
+					}, 'world'));
+				});
 
 			});
 
