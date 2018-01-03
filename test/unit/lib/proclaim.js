@@ -900,7 +900,28 @@
 						world: false}, 'world'));
 				});
 
+				it('should not use the objects hasOwnProperty method', function() {
+					assert.doesNotThrow(callFn(proclaim.include, {
+						hasOwnProperty: function() {
+							throw new Error();
+						},
+						world: false
+					}, 'world'));
+				});
+
 			});
+
+			if ('create' in Object && typeof Object.create === 'function') {
+				describe('given an object with no prototype', function() {
+
+					it('should not throw if the "needle" property is found', function() {
+						var obj = Object.create(null);
+						obj.hello = true;
+						obj.world = false;
+						assert.doesNotThrow(callFn(proclaim.include, obj, 'world'));
+					});
+				});
+			}
 
 			describe('given an enhanced object (such as Window)', function() {
 				var MockWindow;
