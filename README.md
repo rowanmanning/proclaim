@@ -320,6 +320,15 @@ Assert that `actual > expected`.
 Assert that `actual >= expected`.
 
 
+### proclaim.isNotEnumerable( obj, property, [message] )
+
+Assert that `obj[property]` is not enumerable.
+
+
+### proclaim.isEnumerable( obj, property, [message] )
+
+Assert that `obj[property]` is enumerable.
+
 Why?
 ----
 
