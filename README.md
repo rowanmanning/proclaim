@@ -320,6 +320,11 @@ Assert that `actual > expected`.
 Assert that `actual >= expected`.
 
 
+### proclaim.greaterThanOrEqual( actual, expected, [precision = 7], [message] )
+
+Assert that `Math.abs(actual - expected) < (0.5 * Math.pow(10, -precision))`.
+
+
 Why?
 ----
 

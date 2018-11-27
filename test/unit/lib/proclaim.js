@@ -1114,6 +1114,25 @@
 
 		});
 
+		describe('.almostEqual()', function() {
+
+			it('should be a function', function() {
+				assert.isFunction(proclaim.almostEqual);
+			});
+
+			it('should not throw when called with a value that is almost equal to the expected value', function() {
+				assert.doesNotThrow(callFn(proclaim.almostEqual, 1, 1.00000000000001));
+				assert.doesNotThrow(callFn(proclaim.almostEqual, 1, 1.00001, 4));
+				assert.doesNotThrow(callFn(proclaim.almostEqual, 1, 1.1, 0));
+				assert.doesNotThrow(callFn(proclaim.almostEqual, 1, 1));
+			});
+
+			it('should throw when called with a value that is not almost equal to the expected value', function() {
+				assert.throws(callFn(proclaim.almostEqual, 1, 2));
+			});
+
+		});
+
 	});
 
 }());
