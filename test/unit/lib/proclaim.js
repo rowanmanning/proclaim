@@ -1121,10 +1121,12 @@
 			});
 
 			it('should not throw when called with a function that has the same number of arguments as the expected value', function() {
-				assert.doesNotThrow(callFn(proclaim.arity, function(){}, 0));
-				assert.doesNotThrow(callFn(proclaim.arity, function(a){}, 1));
-				assert.doesNotThrow(callFn(proclaim.arity, function(a, b){}, 2));
-				assert.doesNotThrow(callFn(proclaim.arity, function(a, b, c){}, 3));
+				assert.doesNotThrow(callFn(proclaim.arity, function() {}, 0));
+				/* eslint-disable no-unused-vars, id-length */
+				assert.doesNotThrow(callFn(proclaim.arity, function(a) {}, 1));
+				assert.doesNotThrow(callFn(proclaim.arity, function(a, b) {}, 2));
+				assert.doesNotThrow(callFn(proclaim.arity, function(a, b, c) {}, 3));
+				/* eslint-enable no-unused-vars, id-length */
 			});
 
 			it('should throw when called with a value that is not a function', function() {
@@ -1138,7 +1140,7 @@
 			});
 
 			it('should throw when called with a value that is a function which has a different number of arguments to the expected value', function() {
-				assert.throws(callFn(proclaim.arity, function(){}, 2));
+				assert.throws(callFn(proclaim.arity, function() {}, 2));
 			});
 
 		});
