@@ -649,6 +649,48 @@
 
 		});
 
+		describe('isNaN()', function() {
+
+			it('should be a function', function() {
+				assert.isFunction(proclaim.isNaN);
+			});
+
+			it('should not throw when called with NaN', function() {
+				assert.doesNotThrow(callFn(proclaim.isNaN, NaN));
+			});
+
+			it('should throw when called with a non-NaN', function() {
+				assert.throws(callFn(proclaim.isNaN, null), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNaN, 'foo'), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNaN, {}), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNaN, 1), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNaN, []), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNaN, /./), proclaim.AssertionError);
+			});
+
+		});
+
+		describe('isNotNaN()', function() {
+
+			it('should be a function', function() {
+				assert.isFunction(proclaim.isNotNaN);
+			});
+
+			it('should not throw when called with a non-NaN', function() {
+				assert.doesNotThrow(callFn(proclaim.isNotNaN, null));
+				assert.doesNotThrow(callFn(proclaim.isNotNaN, 'foo'));
+				assert.doesNotThrow(callFn(proclaim.isNotNaN, {}));
+				assert.doesNotThrow(callFn(proclaim.isNotNaN, 1));
+				assert.doesNotThrow(callFn(proclaim.isNotNaN, []));
+				assert.doesNotThrow(callFn(proclaim.isNotNaN, /./));
+			});
+
+			it('should throw when called with a NaN', function() {
+				assert.throws(callFn(proclaim.isNotNaN, NaN), proclaim.AssertionError);
+			});
+
+		});
+
 		describe('isNull()', function() {
 
 			it('should be a function', function() {
