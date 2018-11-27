@@ -1121,7 +1121,7 @@
 			});
 
 			it('should not throw when called with a function that has the same name as the expected value', function() {
-				assert.doesNotThrow(callFn(proclaim.hasName, function foo(){}, 'foo'));
+				assert.doesNotThrow(callFn(proclaim.hasName, function foo() {}, 'foo'));
 			});
 
 			it('should throw when called with a value that is not a function', function() {
@@ -1131,10 +1131,10 @@
 				assert.throws(callFn(proclaim.hasName, [], 'foo'));
 				assert.throws(callFn(proclaim.hasName, /./, 'foo'));
 			});
-			
+
 			it('should throw when called with a value that is a function that has a different name than the expected value', function() {
-				assert.throws(callFn(proclaim.hasName, function(){}, 'foo'));
-				assert.throws(callFn(proclaim.hasName, function bar(){}, 'foo'));
+				assert.throws(callFn(proclaim.hasName, function() {}, 'foo'));
+				assert.throws(callFn(proclaim.hasName, function bar() {}, 'foo'));
 			});
 
 		});
