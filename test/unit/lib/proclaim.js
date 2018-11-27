@@ -1114,6 +1114,35 @@
 
 		});
 
+		describe('.arity()', function() {
+
+			it('should be a function', function() {
+				assert.isFunction(proclaim.arity);
+			});
+
+			it('should not throw when called with a function that has the same number of arguments as the expected value', function() {
+				assert.doesNotThrow(callFn(proclaim.arity, function(){}, 0));
+				assert.doesNotThrow(callFn(proclaim.arity, function(a){}, 1));
+				assert.doesNotThrow(callFn(proclaim.arity, function(a, b){}, 2));
+				assert.doesNotThrow(callFn(proclaim.arity, function(a, b, c){}, 3));
+			});
+
+			it('should throw when called with a value that is not a function', function() {
+				assert.throws(callFn(proclaim.arity, 1, 2));
+				assert.throws(callFn(proclaim.arity, false, 2));
+				assert.throws(callFn(proclaim.arity, null, 2));
+				assert.throws(callFn(proclaim.arity, undefined, 2));
+				assert.throws(callFn(proclaim.arity, {}, 2));
+				assert.throws(callFn(proclaim.arity, [], 2));
+				assert.throws(callFn(proclaim.arity, /./, 2));
+			});
+
+			it('should throw when called with a value that is a function which has a different number of arguments to the expected value', function() {
+				assert.throws(callFn(proclaim.arity, function(){}, 2));
+			});
+
+		});
+
 	});
 
 }());
