@@ -320,6 +320,11 @@ Assert that `actual > expected`.
 Assert that `actual >= expected`.
 
 
+### proclaim.hasName( fn, expected, [message] )
+
+Assert that `fn.name === expected`.
+
+
 Why?
 ----
 
