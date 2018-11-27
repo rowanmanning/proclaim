@@ -676,17 +676,20 @@
 				assert.isFunction(proclaim.isNotNaN);
 			});
 
-			it('should not throw when called with a non-NaN', function() {
-				assert.doesNotThrow(callFn(proclaim.isNotNaN, null));
-				assert.doesNotThrow(callFn(proclaim.isNotNaN, 'foo'));
-				assert.doesNotThrow(callFn(proclaim.isNotNaN, {}));
+			it('should not throw when called with a non-NaN Number', function() {
 				assert.doesNotThrow(callFn(proclaim.isNotNaN, 1));
-				assert.doesNotThrow(callFn(proclaim.isNotNaN, []));
-				assert.doesNotThrow(callFn(proclaim.isNotNaN, /./));
 			});
 
 			it('should throw when called with a NaN', function() {
 				assert.throws(callFn(proclaim.isNotNaN, NaN), proclaim.AssertionError);
+			});
+
+			it('should throw when called with anything which is not a Number type', function() {
+				assert.throws(callFn(proclaim.isNotNaN, null), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNotNaN, 'foo'), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNotNaN, {}), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNotNaN, []), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNotNaN, /./), proclaim.AssertionError);
 			});
 
 		});
