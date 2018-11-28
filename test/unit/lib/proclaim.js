@@ -1,4 +1,5 @@
 /* eslint strict: ['error', 'function'] */
+
 (function() {
 	'use strict';
 
@@ -1129,6 +1130,62 @@
 
 			it('should throw when called with a value that is not almost equal to the expected value', function() {
 				assert.throws(callFn(proclaim.almostEqual, 1, 2));
+      });
+
+    });
+
+		describe('.isEnumerable()', function() {
+
+			it('should be a function', function() {
+				assert.isFunction(proclaim.isEnumerable);
+			});
+
+			it('should not throw when called with an object whose property is enumerable', function() {
+				var property = 'a';
+				var obj = {};
+				Object.defineProperty(obj, property, {
+					enumerable: true,
+					value: 1
+				});
+				assert.doesNotThrow(callFn(proclaim.isEnumerable, obj, property));
+			});
+
+			it('should throw when called with an object whose property is not enumerable', function() {
+				var property = 'a';
+				var obj = {};
+				Object.defineProperty(obj, property, {
+					enumerable: false,
+					value: 1
+				});
+				assert.throws(callFn(proclaim.isEnumerable, obj, property));
+			});
+
+		});
+
+		describe('.isNotEnumerable()', function() {
+
+			it('should be a function', function() {
+				assert.isFunction(proclaim.isNotEnumerable);
+			});
+
+			it('should not throw when called with an object whose property is not enumerable', function() {
+				var property = 'a';
+				var obj = {};
+				Object.defineProperty(obj, property, {
+					enumerable: false,
+					value: 1
+				});
+				assert.doesNotThrow(callFn(proclaim.isNotEnumerable, obj, property));
+			});
+
+			it('should throw when called with an object whose property is enumerable', function() {
+				var property = 'a';
+				var obj = {};
+				Object.defineProperty(obj, property, {
+					enumerable: true,
+					value: 1
+				});
+				assert.throws(callFn(proclaim.isNotEnumerable, obj, property));
 			});
 
 		});
