@@ -1,4 +1,5 @@
 /* eslint strict: ['error', 'function'] */
+
 (function() {
 	'use strict';
 
@@ -649,6 +650,51 @@
 
 		});
 
+		describe('isNaN()', function() {
+
+			it('should be a function', function() {
+				assert.isFunction(proclaim.isNaN);
+			});
+
+			it('should not throw when called with NaN', function() {
+				assert.doesNotThrow(callFn(proclaim.isNaN, NaN));
+			});
+
+			it('should throw when called with a non-NaN', function() {
+				assert.throws(callFn(proclaim.isNaN, null), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNaN, 'foo'), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNaN, {}), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNaN, 1), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNaN, []), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNaN, /./), proclaim.AssertionError);
+			});
+
+		});
+
+		describe('isNotNaN()', function() {
+
+			it('should be a function', function() {
+				assert.isFunction(proclaim.isNotNaN);
+			});
+
+			it('should not throw when called with a non-NaN Number', function() {
+				assert.doesNotThrow(callFn(proclaim.isNotNaN, 1));
+			});
+
+			it('should throw when called with a NaN', function() {
+				assert.throws(callFn(proclaim.isNotNaN, NaN), proclaim.AssertionError);
+			});
+
+			it('should throw when called with anything which is not a Number type', function() {
+				assert.throws(callFn(proclaim.isNotNaN, null), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNotNaN, 'foo'), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNotNaN, {}), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNotNaN, []), proclaim.AssertionError);
+				assert.throws(callFn(proclaim.isNotNaN, /./), proclaim.AssertionError);
+			});
+
+		});
+
 		describe('isNull()', function() {
 
 			it('should be a function', function() {
@@ -1135,6 +1181,112 @@
 			it('should throw when called with a value that is a function that has a different name than the expected value', function() {
 				assert.throws(callFn(proclaim.hasName, function() {}, 'foo'));
 				assert.throws(callFn(proclaim.hasName, function bar() {}, 'foo'));
+			});
+
+		});
+
+		describe('.arity()', function() {
+
+			it('should be a function', function() {
+				assert.isFunction(proclaim.arity);
+			});
+
+			it('should not throw when called with a function that has the same number of arguments as the expected value', function() {
+				assert.doesNotThrow(callFn(proclaim.arity, function() {}, 0));
+				/* eslint-disable no-unused-vars, id-length */
+				assert.doesNotThrow(callFn(proclaim.arity, function(a) {}, 1));
+				assert.doesNotThrow(callFn(proclaim.arity, function(a, b) {}, 2));
+				assert.doesNotThrow(callFn(proclaim.arity, function(a, b, c) {}, 3));
+				/* eslint-enable no-unused-vars, id-length */
+			});
+
+			it('should throw when called with a value that is not a function', function() {
+				assert.throws(callFn(proclaim.arity, 1, 2));
+				assert.throws(callFn(proclaim.arity, false, 2));
+				assert.throws(callFn(proclaim.arity, null, 2));
+				assert.throws(callFn(proclaim.arity, undefined, 2));
+				assert.throws(callFn(proclaim.arity, {}, 2));
+				assert.throws(callFn(proclaim.arity, [], 2));
+				assert.throws(callFn(proclaim.arity, /./, 2));
+			});
+
+			it('should throw when called with a value that is a function which has a different number of arguments to the expected value', function() {
+				assert.throws(callFn(proclaim.arity, function() {}, 2));
+			});
+
+		});
+
+		describe('.almostEqual()', function() {
+
+			it('should be a function', function() {
+				assert.isFunction(proclaim.almostEqual);
+			});
+
+			it('should not throw when called with a value that is almost equal to the expected value', function() {
+				assert.doesNotThrow(callFn(proclaim.almostEqual, 1, 1.00000000000001));
+				assert.doesNotThrow(callFn(proclaim.almostEqual, 1, 1.00001, 4));
+				assert.doesNotThrow(callFn(proclaim.almostEqual, 1, 1.1, 0));
+				assert.doesNotThrow(callFn(proclaim.almostEqual, 1, 1));
+			});
+
+			it('should throw when called with a value that is not almost equal to the expected value', function() {
+				assert.throws(callFn(proclaim.almostEqual, 1, 2));
+			});
+
+		});
+
+		describe('.isEnumerable()', function() {
+
+			it('should be a function', function() {
+				assert.isFunction(proclaim.isEnumerable);
+			});
+
+			it('should not throw when called with an object whose property is enumerable', function() {
+				var property = 'a';
+				var obj = {};
+				Object.defineProperty(obj, property, {
+					enumerable: true,
+					value: 1
+				});
+				assert.doesNotThrow(callFn(proclaim.isEnumerable, obj, property));
+			});
+
+			it('should throw when called with an object whose property is not enumerable', function() {
+				var property = 'a';
+				var obj = {};
+				Object.defineProperty(obj, property, {
+					enumerable: false,
+					value: 1
+				});
+				assert.throws(callFn(proclaim.isEnumerable, obj, property));
+			});
+
+		});
+
+		describe('.isNotEnumerable()', function() {
+
+			it('should be a function', function() {
+				assert.isFunction(proclaim.isNotEnumerable);
+			});
+
+			it('should not throw when called with an object whose property is not enumerable', function() {
+				var property = 'a';
+				var obj = {};
+				Object.defineProperty(obj, property, {
+					enumerable: false,
+					value: 1
+				});
+				assert.doesNotThrow(callFn(proclaim.isNotEnumerable, obj, property));
+			});
+
+			it('should throw when called with an object whose property is enumerable', function() {
+				var property = 'a';
+				var obj = {};
+				Object.defineProperty(obj, property, {
+					enumerable: true,
+					value: 1
+				});
+				assert.throws(callFn(proclaim.isNotEnumerable, obj, property));
 			});
 
 		});
