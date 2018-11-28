@@ -348,6 +348,11 @@ Assert that `obj[property]` is not enumerable.
 
 Assert that `obj[property]` is enumerable.
 
+### proclaim.hasName( fn, expected, [message] )
+
+Assert that `fn.name === expected`.
+
+
 Why?
 ----
 
