@@ -329,6 +329,10 @@ Assert that `actual > expected`.
 
 Assert that `actual >= expected`.
 
+### proclaim.arity( fn, expected, [message] )
+
+Assert that `fn.length === expected`.
+
 
 ### proclaim.almostEqual( actual, expected, [precision = 7], [message] )
 
