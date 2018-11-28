@@ -217,6 +217,16 @@ Assert that `value` is a `function`.
 Assert that `value` is not a `function`.
 
 
+### proclaim.isNaN( value, [message] )
+
+Assert that `value` is `NaN`.
+
+
+### proclaim.isNotNaN( value, [message] )
+
+Assert that `value` is not `NaN`.
+
+
 ### proclaim.isNull( value, [message] )
 
 Assert that `value === null`.
@@ -323,6 +333,20 @@ Assert that `actual >= expected`.
 
 Assert that `fn.length === expected`.
 
+
+### proclaim.almostEqual( actual, expected, [precision = 7], [message] )
+
+Assert that `Math.abs(actual - expected) < (0.5 * Math.pow(10, -precision))`.
+
+
+### proclaim.isNotEnumerable( obj, property, [message] )
+
+Assert that `obj[property]` is not enumerable.
+
+
+### proclaim.isEnumerable( obj, property, [message] )
+
+Assert that `obj[property]` is enumerable.
 
 Why?
 ----
