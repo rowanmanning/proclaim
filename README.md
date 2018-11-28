@@ -217,6 +217,16 @@ Assert that `value` is a `function`.
 Assert that `value` is not a `function`.
 
 
+### proclaim.isNaN( value, [message] )
+
+Assert that `value` is `NaN`.
+
+
+### proclaim.isNotNaN( value, [message] )
+
+Assert that `value` is not `NaN`.
+
+
 ### proclaim.isNull( value, [message] )
 
 Assert that `value === null`.
