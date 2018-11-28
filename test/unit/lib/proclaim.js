@@ -1130,9 +1130,9 @@
 
 			it('should throw when called with a value that is not almost equal to the expected value', function() {
 				assert.throws(callFn(proclaim.almostEqual, 1, 2));
-      });
+			});
 
-    });
+		});
 
 		describe('.isEnumerable()', function() {
 
