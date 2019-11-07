@@ -1,13 +1,17 @@
 {
-    "name": "proclaim",
-
-    "description": "A simple assertion library for server and client side JavaScript",
-    "keywords": [ "assert", "test" ],
-    "author": "Rowan Manning (http://rowanmanning.co.uk/)",
-    "license": "MIT",
-
-    "homepage": "https://github.com/rowanmanning/proclaim",
-    "bugs": "https://github.com/rowanmanning/proclaim/issues",
-
-    "main": "./lib/proclaim.js"
+  "name": "proclaim",
+  "description": "A simple assertion library for server and client side JavaScript",
+  "keywords": [
+    "assert",
+    "test"
+  ],
+  "author": "Rowan Manning (http://rowanmanning.co.uk/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rowanmanning/proclaim.git"
+  },
+  "homepage": "https://github.com/rowanmanning/proclaim",
+  "bugs": "https://github.com/rowanmanning/proclaim/issues",
+  "license": "MIT",
+  "main": "./lib/proclaim.js"
 }
