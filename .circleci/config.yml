@@ -1,0 +1,135 @@
+version: 2.1
+
+# Commands
+commands:
+
+  lint:
+    steps:
+      - checkout
+      - restore-node-modules
+      - npm-install
+      - run:
+          name: Lint
+          command: make verify
+      - cache-node-modules
+
+  test:
+    steps:
+      - checkout
+      - restore-node-modules
+      - npm-install
+      - run:
+          name: Run tests
+          command: make test
+      - cache-node-modules
+
+  publish:
+    steps:
+      - checkout
+      - restore-node-modules
+      - npm-install
+      - run:
+          name: Publish to npm
+          command: make publish-npm
+      - cache-node-modules
+
+  npm-install:
+    steps:
+      - run:
+          name: Install dependencies from npm
+          command: npm install
+
+  restore-node-modules:
+    steps:
+      - restore_cache:
+          keys:
+            - dependency-cache-v1-{{ arch }}-{{ .Environment.CIRCLE_JOB }}-npm{{ checksum "package-lock.json" }}
+            - dependency-cache-v1-{{ arch }}-{{ .Environment.CIRCLE_JOB }}
+
+  cache-node-modules:
+    steps:
+      - save_cache:
+          key: dependency-cache-v1-{{ arch }}-{{ .Branch }}-{{ .Environment.CIRCLE_JOB }}-npm{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+
+# Actual CI jobs
+jobs:
+
+  # Linting job
+  lint:
+    docker:
+      - image: node:12
+    steps:
+      - lint
+
+  # Test against Node.js 10
+  test-node-10:
+    docker:
+      - image: node:10
+    steps:
+      - test
+
+  # Test against Node.js 12
+  test-node-12:
+    docker:
+      - image: node:12
+    steps:
+      - test
+
+  # Test against Node.js 13 (temporary)
+  test-node-13:
+    docker:
+      - image: node:13
+    steps:
+      - test
+
+  # Publish to npm
+  publish:
+    docker:
+      - image: node:12
+    steps:
+      - publish
+
+# Workflows
+workflows:
+  version: 2
+  lint-test-publish:
+    jobs:
+
+      - lint:
+          filters:
+            tags:
+              only: /^v?[0-9]+\.[0-9]+\.[0-9]+([-+].+)?/
+
+      - test-node-10:
+          requires:
+            - lint
+          filters:
+            tags:
+              only: /^v?[0-9]+\.[0-9]+\.[0-9]+([-+].+)?/
+
+      - test-node-12:
+          requires:
+            - lint
+          filters:
+            tags:
+              only: /^v?[0-9]+\.[0-9]+\.[0-9]+([-+].+)?/
+
+      - test-node-13:
+          requires:
+            - lint
+          filters:
+            tags:
+              only: /^v?[0-9]+\.[0-9]+\.[0-9]+([-+].+)?/
+
+      - publish:
+          requires:
+            - test-node-10
+            - test-node-12
+            - test-node-13
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v?[0-9]+\.[0-9]+\.[0-9]+([-+].+)?/

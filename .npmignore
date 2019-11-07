@@ -1,8 +1,9 @@
+.circleci
 .nyc_output
-.travis.yml
 build
 component.json
 components
+coverage
 node_modules
 npm-debug.log
 Makefile
