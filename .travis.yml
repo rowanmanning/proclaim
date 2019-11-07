@@ -9,11 +9,6 @@ matrix:
       env:
         - LINT=true
 
-    # Run browser tests
-    - node_js: '7'
-      env:
-        - SAUCE=true
-
     # Run tests
     - node_js: '0.10'
     - node_js: '0.12'
@@ -46,6 +41,5 @@ before_install:
 # Build script
 script:
   - 'if [ $LINT ]; then make verify; fi'
-  - 'if [ $SAUCE ]; then ./node_modules/.bin/zuul -ui mocha-bdd -- test/unit/lib/proclaim.js; fi'
   - 'if [ ! $LINT ] && [ ! $SAUCE ]; then make test; fi'
   - 'if [ ! $LINT ] && [ ! $SAUCE ]; then cat ./coverage/lcov.info | ./node_modules/.bin/coveralls || true; fi'
