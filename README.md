@@ -32,20 +32,19 @@ Table Of Contents
 Install
 -------
 
-You can use Proclaim on the server side with [Node.js][node] and npm:
+You can use Proclaim with [Node.js][node] and npm:
 
 ```sh
 $ npm install proclaim
 ```
 
-On the client side, you can either install Proclaim through [Bower][bower]/[Component][component]:
+You can also install Proclaim through [Bower][bower]:
 
 ```sh
 $ bower install proclaim
-$ component install rowanmanning/proclaim
 ```
 
-or by simply including `proclaim.js` in your page:
+Lastly, you can include `proclaim.js` in your page:
 
 ```html
 <script src="path/to/lib/proclaim.js"></script>
@@ -55,7 +54,7 @@ or by simply including `proclaim.js` in your page:
 Usage
 -----
 
-In Node.js or using Component, you can include Proclaim in your script by using require:
+In Node.js you can include Proclaim in your script by using require:
 
 ```js
 var proclaim = require('proclaim');
@@ -64,9 +63,9 @@ var proclaim = require('proclaim');
 var assert = require('proclaim');
 ```
 
-Proclaim also works with AMD-style module loaders, just specify it as a dependency.
+Proclaim also works with AMD-style module loaders if you specify it as a dependency.
 
-If you're just including with a `<script>`, `proclaim` is available as a global variable.
+If you're including with a `<script>`, `proclaim` is available as a global variable.
 
 
 Assertions
@@ -434,7 +433,6 @@ Copyright &copy; 2015, Rowan Manning
 [bower]: http://bower.io/
 [chai]: http://chaijs.com/
 [commonjs-unit]: http://wiki.commonjs.org/wiki/Unit_Testing/1.0#Assert
-[component]: https://github.com/component/component
 [node]: http://nodejs.org/
 [node-assert]: http://nodejs.org/api/assert.html
 [matrix-link]: https://saucelabs.com/u/proclaim
