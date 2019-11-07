@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	extends: '@rowanmanning/eslint-config/legacy',
+	extends: '@rowanmanning/eslint-config/es2018',
 	globals: {
 		define: true
 	},

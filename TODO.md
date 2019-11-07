@@ -1,0 +1,51 @@
+
+- [ ] [ ] isAlmostEqual (almostEqual)
+- [ ] [ ] hasArity (arity)
+- [ ] [ ] isDeepEqual (deepEqual)
+- [ ] [ ] isDeepStrictEqual (deepStrictEqual)
+- [ ] [ ] doesNotInclude (notInclude)
+- [ ] [ ] doesNotThrow (notThrows)
+- [ ] [ ] hasName
+- [ ] [ ] doesInclude (include)
+- [ ] [ ] isEnumerable (isEnumerable)
+- [ ] [ ] isNotEnumerable (isNotEnumerable)
+- [ ] [ ] isLength (lengthEquals, lengthOf)
+- [ ] [ ] isNotDeepEqual (notDeepEqual)
+- [ ] [ ] isNotDeepStrictEqual (notDeepStrictEqual)
+- [ ] [ ] doesThrow (throws)
+- [x] [x] equal
+- [x] [x] greaterThan
+- [x] [x] greaterThanOrEqual
+- [x] [x] isArray
+- [x] [x] isBoolean
+- [x] [x] isDefined
+- [x] [x] isFalse
+- [x] [x] isFunction
+- [x] [x] isInstanceOf
+- [x] [x] isNaN
+- [x] [x] isNotArray
+- [x] [x] isNotBoolean
+- [x] [x] isNotFunction
+- [x] [x] isNotInstanceOf
+- [x] [x] isNotNaN
+- [x] [x] isNotNull
+- [x] [x] isNotNumber
+- [x] [x] isNotObject
+- [x] [x] isNotString
+- [x] [x] isNotTypeOf
+- [x] [x] isNull
+- [x] [x] isNumber
+- [x] [x] isObject
+- [x] [x] isString
+- [x] [x] isTrue
+- [x] [x] isTypeOf
+- [x] [x] isUndefined
+- [x] [x] lessThan
+- [x] [x] lessThanOrEqual
+- [x] [x] match
+- [x] [x] notEqual
+- [x] [x] notMatch
+- [x] [x] notOk (falsy)
+- [x] [x] notStrictEqual
+- [x] [x] ok (truthy)
+- [x] [x] strictEqual

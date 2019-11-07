@@ -22,10 +22,12 @@
   },
   "devDependencies": {
     "@rowanmanning/eslint-config": "^2.1.0",
-    "@rowanmanning/make": "^1.2.0",
+    "@rowanmanning/make": "^2.0.0",
     "eslint": "^6.6.0",
     "mocha": "^6.2.2",
-    "nyc": "^14.1.1"
+    "mockery": "^2.1.0",
+    "nyc": "^14.1.1",
+    "sinon": "^7.5.0"
   },
   "main": "./lib/proclaim.js",
   "scripts": {
