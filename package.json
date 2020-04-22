@@ -1,6 +1,6 @@
 {
   "name": "proclaim",
-  "version": "3.5.1",
+  "version": "0.0.0",
   "description": "A simple assertion library for server and client side JavaScript",
   "keywords": [
     "assert",
@@ -13,6 +13,7 @@
   },
   "homepage": "https://github.com/rowanmanning/proclaim",
   "bugs": "https://github.com/rowanmanning/proclaim/issues",
+  "license": "MIT",
   "engines": {
     "node": ">=0.10"
   },
@@ -20,11 +21,11 @@
     "util-inspect": "^0.1.8"
   },
   "devDependencies": {
-    "@rowanmanning/eslint-config": "^1.0.0",
-    "eslint": "^4.8.0",
-    "istanbul": "~0.3",
-    "mocha": "^2",
-    "zuul": "^3"
+    "@rowanmanning/eslint-config": "^2.1.0",
+    "@rowanmanning/make": "^1.2.0",
+    "eslint": "^6.6.0",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1"
   },
   "main": "./lib/proclaim.js",
   "scripts": {

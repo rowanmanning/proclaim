@@ -6,9 +6,6 @@ A simple assertion library for server and client side JavaScript. Proclaim can b
 
 [![NPM version][shield-npm]][info-npm]
 [![Bower version][shield-bower]][info-bower]
-[![Node.js version support][shield-node]][info-node]
-[![Build status][shield-build]][info-build]
-[![Code coverage][shield-coverage]][info-coverage]
 [![MIT licensed][shield-license]][info-license]
 
 ```js
@@ -32,20 +29,19 @@ Table Of Contents
 Install
 -------
 
-You can use Proclaim on the server side with [Node.js][node] and npm:
+You can use Proclaim with [Node.js][node] and npm:
 
 ```sh
 $ npm install proclaim
 ```
 
-On the client side, you can either install Proclaim through [Bower][bower]/[Component][component]:
+You can also install Proclaim through [Bower][bower]:
 
 ```sh
 $ bower install proclaim
-$ component install rowanmanning/proclaim
 ```
 
-or by simply including `proclaim.js` in your page:
+Lastly, you can include `proclaim.js` in your page:
 
 ```html
 <script src="path/to/lib/proclaim.js"></script>
@@ -55,7 +51,7 @@ or by simply including `proclaim.js` in your page:
 Usage
 -----
 
-In Node.js or using Component, you can include Proclaim in your script by using require:
+In Node.js you can include Proclaim in your script by using require:
 
 ```js
 var proclaim = require('proclaim');
@@ -64,9 +60,9 @@ var proclaim = require('proclaim');
 var assert = require('proclaim');
 ```
 
-Proclaim also works with AMD-style module loaders, just specify it as a dependency.
+Proclaim also works with AMD-style module loaders if you specify it as a dependency.
 
-If you're just including with a `<script>`, `proclaim` is available as a global variable.
+If you're including with a `<script>`, `proclaim` is available as a global variable.
 
 
 Assertions
@@ -434,20 +430,13 @@ Copyright &copy; 2015, Rowan Manning
 [bower]: http://bower.io/
 [chai]: http://chaijs.com/
 [commonjs-unit]: http://wiki.commonjs.org/wiki/Unit_Testing/1.0#Assert
-[component]: https://github.com/component/component
 [node]: http://nodejs.org/
 [node-assert]: http://nodejs.org/api/assert.html
 [matrix-link]: https://saucelabs.com/u/proclaim
 
 [info-bower]: http://bower.io/search/?q=proclaim
-[info-coverage]: https://coveralls.io/github/rowanmanning/proclaim
 [info-license]: LICENSE
-[info-node]: package.json
 [info-npm]: https://www.npmjs.com/package/proclaim
-[info-build]: https://travis-ci.org/rowanmanning/proclaim
 [shield-bower]: https://img.shields.io/bower/v/proclaim.svg
-[shield-coverage]: https://img.shields.io/coveralls/rowanmanning/proclaim.svg
 [shield-license]: https://img.shields.io/badge/license-MIT-blue.svg
-[shield-node]: https://img.shields.io/badge/node.js%20support-0.10–7-brightgreen.svg
 [shield-npm]: https://img.shields.io/npm/v/proclaim.svg
-[shield-build]: https://img.shields.io/travis/rowanmanning/proclaim/master.svg

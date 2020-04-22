@@ -1,5 +1,4 @@
 /* eslint strict: ['error', 'function'] */
-
 (function() {
 	'use strict';
 
