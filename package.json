@@ -23,7 +23,7 @@
     "@rowanmanning/eslint-config": "^1.0.0",
     "eslint": "^4.8.0",
     "istanbul": "~0.3",
-    "mocha": "^2",
+    "mocha": "^8",
     "zuul": "^3"
   },
   "main": "./lib/proclaim.js",
